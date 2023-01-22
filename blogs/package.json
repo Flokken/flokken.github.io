@@ -1,0 +1,19 @@
+{
+  "name": "flokkenblog",
+  "version": "1.0.0",
+  "author": "reco_luan",
+  "scripts": {
+    "dev": "vuepress dev . --open --host \"localhost\"",
+    "build": "vuepress build ."
+  },
+  "devDependencies": {
+    "vuepress": "1.9.7",
+    "vuepress-theme-reco": "1.6.16"
+  },
+  "description": "myblog",
+  "dependencies": {
+    "@vuepress-reco/vuepress-plugin-bgm-player": "^1.1.4",
+    "markdown-it-disable-url-encode": "^1.0.1",
+    "vuepress-plugin-cursor-effects": "^1.1.6"
+  }
+}
