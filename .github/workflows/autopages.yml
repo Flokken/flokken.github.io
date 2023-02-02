@@ -1,11 +1,9 @@
-name: ci
+name: auto-pages
 on:
   # 每当 push 到 main 分支时触发部署
   push:
-    branches: [master]
-  # 手动触发部署
-  workflow_dispatch:
-
+    branches: [main]
+    
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
