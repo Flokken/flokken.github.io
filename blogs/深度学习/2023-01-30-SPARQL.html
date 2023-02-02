@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>SparlQL介绍 | flokkenblog</title>
+    <meta name="generator" content="VuePress 1.9.7">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="稍微入下门">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.4e705c22.css" as="style"><link rel="preload" href="/assets/js/app.f6ccd837.js" as="script"><link rel="preload" href="/assets/js/3.35b346e0.js" as="script"><link rel="preload" href="/assets/js/1.1304c970.js" as="script"><link rel="preload" href="/assets/js/24.26d53bf8.js" as="script"><link rel="prefetch" href="/assets/js/10.1c368748.js"><link rel="prefetch" href="/assets/js/11.55276172.js"><link rel="prefetch" href="/assets/js/12.b9858201.js"><link rel="prefetch" href="/assets/js/13.af4b9abd.js"><link rel="prefetch" href="/assets/js/14.384944f7.js"><link rel="prefetch" href="/assets/js/15.1a192bac.js"><link rel="prefetch" href="/assets/js/16.364e9f01.js"><link rel="prefetch" href="/assets/js/17.947fea4f.js"><link rel="prefetch" href="/assets/js/18.714e9a4b.js"><link rel="prefetch" href="/assets/js/19.36fecbda.js"><link rel="prefetch" href="/assets/js/20.6e51a770.js"><link rel="prefetch" href="/assets/js/21.ade49199.js"><link rel="prefetch" href="/assets/js/22.4cdf1a2a.js"><link rel="prefetch" href="/assets/js/23.0b075929.js"><link rel="prefetch" href="/assets/js/25.b3816d91.js"><link rel="prefetch" href="/assets/js/26.81f28839.js"><link rel="prefetch" href="/assets/js/27.a2698109.js"><link rel="prefetch" href="/assets/js/28.b3810c5a.js"><link rel="prefetch" href="/assets/js/29.2d8c55e0.js"><link rel="prefetch" href="/assets/js/4.e6fcc3d1.js"><link rel="prefetch" href="/assets/js/5.6d875cae.js"><link rel="prefetch" href="/assets/js/6.60c28a67.js"><link rel="prefetch" href="/assets/js/7.87079939.js"><link rel="prefetch" href="/assets/js/8.f2a2c149.js"><link rel="prefetch" href="/assets/js/9.1548f60e.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.4e705c22.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container no-sidebar" data-v-7dd95ae2><div data-v-7dd95ae2><div class="password-shadow password-wrapper-out" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>flokkenblog</h3> <p class="description" data-v-59e6cb88>myblog</p> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>flokken</span>
+          
+        <!---->
+        2023
+      </a></span></div></div> <div class="hide" data-v-7dd95ae2><header class="navbar" data-v-7dd95ae2><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="flokkenblog" class="logo"> <span class="site-name">flokkenblog</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/前端/" class="nav-link"><i class="undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/大数据/" class="nav-link"><i class="undefined"></i>
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/categories/安全/" class="nav-link"><i class="undefined"></i>
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/categories/机器学习/" class="nav-link"><i class="undefined"></i>
+  机器学习
+</a></li><li class="dropdown-item"><!----> <a href="/categories/深度学习/" class="nav-link"><i class="undefined"></i>
+  深度学习
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/theme-reco/" class="nav-link"><i class="undefined"></i>
+  vuepress-reco
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Github
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Flokken" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-7dd95ae2></div> <aside class="sidebar" data-v-7dd95ae2><div class="personal-info-wrapper" data-v-1fad0c41 data-v-7dd95ae2><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-1fad0c41> <h3 class="name" data-v-1fad0c41>
+    flokken
+  </h3> <div class="num" data-v-1fad0c41><div data-v-1fad0c41><h3 data-v-1fad0c41>18</h3> <h6 data-v-1fad0c41>Articles</h6></div> <div data-v-1fad0c41><h3 data-v-1fad0c41>8</h3> <h6 data-v-1fad0c41>Tags</h6></div></div> <ul class="social-links" data-v-1fad0c41></ul> <hr data-v-1fad0c41></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/前端/" class="nav-link"><i class="undefined"></i>
+  前端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/后端/" class="nav-link"><i class="undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/大数据/" class="nav-link"><i class="undefined"></i>
+  大数据
+</a></li><li class="dropdown-item"><!----> <a href="/categories/安全/" class="nav-link"><i class="undefined"></i>
+  安全
+</a></li><li class="dropdown-item"><!----> <a href="/categories/机器学习/" class="nav-link"><i class="undefined"></i>
+  机器学习
+</a></li><li class="dropdown-item"><!----> <a href="/categories/深度学习/" class="nav-link"><i class="undefined"></i>
+  深度学习
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      文档
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/theme-reco/" class="nav-link"><i class="undefined"></i>
+  vuepress-reco
+</a></li></ul></div></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时间轴
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      Github
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="https://github.com/Flokken" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-github"></i>
+  GitHub
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul></div></div> <!----></nav> <!----> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-59e6cb88 data-v-7dd95ae2><h3 class="title" data-v-59e6cb88>SparlQL介绍</h3> <!----> <label id="box" class="inputBox" data-v-59e6cb88><input type="password" value="" data-v-59e6cb88> <span data-v-59e6cb88>Konck! Knock!</span> <button data-v-59e6cb88>OK</button></label> <div class="footer" data-v-59e6cb88><span data-v-59e6cb88><i class="iconfont reco-theme" data-v-59e6cb88></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-59e6cb88>vuePress-theme-reco</a></span> <span data-v-59e6cb88><i class="iconfont reco-copyright" data-v-59e6cb88></i> <a data-v-59e6cb88><span data-v-59e6cb88>flokken</span>
+          
+        <!---->
+        2023
+      </a></span></div></div> <div data-v-7dd95ae2><div data-v-7dd95ae2><main class="page"><section style="display:;"><div class="page-title"><h1 class="title">SparlQL介绍</h1> <div data-v-8a445198><i class="iconfont reco-account" data-v-8a445198><span data-v-8a445198>flokken</span></i> <i class="iconfont reco-date" data-v-8a445198><span data-v-8a445198>1/30/2023</span></i> <!----> <i class="tags iconfont reco-tag" data-v-8a445198><span class="tag-item" data-v-8a445198>KG</span></i></div></div> <div class="theme-reco-content content__default"><blockquote><p>参考：</p> <p>https://zhuanlan.zhihu.com/p/32703794</p> <p><a href="https://www.w3.org/TR/rdf-sparql-query/" target="_blank" rel="noopener noreferrer">SPARQL语法<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <h2 id="一、sparql"><a href="#一、sparql" class="header-anchor">#</a> 一、SPARQL</h2> <p>SPARQL即SPARQL Protocol and RDF Query Language的递归缩写，专门用于访问和操作RDF数据，是语义网的核心技术之一。W3C的RDF数据存取小组（RDF Data Access Working Group, RDAWG）对其进行了标准化。在2008年，SPARQL 1.0成为W3C官方所推荐的标准。2013年发布了SPARQL 1.1。相对第一个版本，其支持RDF图的更新，提供更强大的查询，比如：子查询、聚合操作（像我们常用的count）等等。</p> <p>从SPARQL的全称我们可以知道，其由两个部分组成：协议和查询语言。</p> <ol><li><p>查询语言很好理解，就像SQL用于查询关系数据库中的数据，XQuery用于查询XML数据，SPARQL用于查询RDF数据。</p></li> <li><p>协议是指我们可以通过HTTP协议在客户端和SPARQL服务器（SPARQL endpoint）之间传输查询和结果，这也是和其他查询语言最大的区别。</p></li></ol> <p>一个SPARQL查询本质上是一个带有变量的RDF图，以我们之前提到的罗纳尔多RDF数据为例：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>&amp;lt;http://www.kg.com/person/1&gt; &amp;lt;http://www.kg.com/ontology/chineseName&gt; &quot;罗纳尔多·路易斯·纳萨里奥·德·利马&quot;^^string.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p><strong>我们把属性值用变量代替（SPARQL中，用问号加变量名的方式来表示一个变量。</strong>），即：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>&amp;lt;http://www.kg.com/person/1&gt; &amp;lt;http://www.kg.com/ontology/chineseName&gt; ?x.
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>SPARQL查询是基于图匹配的思想。我们把上述的查询与RDF图进行匹配，找到符合该匹配模式的所有子图，最后得到变量的值。就上面这个例子而言，在RDF图中找到匹配的子图后，将&quot;罗纳尔多·路易斯·纳萨里奥·德·利马&quot;和“?x”绑定，我们就得到最后的结果。简而言之，SPARQL查询分为三个步骤：</p> <ol><li><p>构建查询图模式，表现形式就是带有变量的RDF。</p></li> <li><p>匹配，匹配到符合指定图模式的子图。</p></li> <li><p>绑定，将结果绑定到查询图模式对应的变量上。</p></li></ol> <h2 id="二、例子"><a href="#二、例子" class="header-anchor">#</a> 二、例子</h2> <p>以实践篇的RDF电影数据为例，我们介绍如何利用SPARQL查询：</p> <ol><li><p>所有的RDF三元组。</p></li> <li><p>周星驰出演了哪些电影？</p></li> <li><p>英雄这部电影有哪些演员参演？</p></li> <li><p>巩俐参演的评分大于7的电影有哪些？</p></li></ol> <p>如何查询所有数据？参照我们在第一个部分介绍的查询过程，查询所有数据即我们没有任何已知值，SPO三元组每个都是未知变量。对应的SPARQL查询语言为：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PREFIX : &amp;lt;http://www.kgdemo.com#&gt;
+PREFIX rdf: &amp;lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX owl: &amp;lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX xsd: &amp;lt;XML Schema&gt;
+PREFIX vocab: &amp;lt;http://localhost:2020/resource/vocab/&gt;
+PREFIX rdfs: &amp;lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX map: &amp;lt;http://localhost:2020/resource/#&gt;
+PREFIX db: &amp;lt;http://localhost:2020/resource/&gt;
+
+SELECT * WHERE {
+  ?s ?p ?o
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>SPARQL的部分关键词：</p> <ul><li>SELECT， 指定我们要查询的变量。在这里我们查询所有的变量，用*代替。</li> <li>WHERE，指定我们要查询的图模式。含义上和SQL的WHERE没有区别。</li> <li>FROM，指定查询的RDF数据集。我们这里只有一个图，因此省去了FROM关键词。</li> <li>PREFIX，用于IRI的缩写。</li> <li>大写的PREFIX代表前缀，把IRL缩写为前缀</li></ul> <p>注意，写前缀时不用加.，只有{}里的语句需要加.,因为里面的就是图模式的RDF。</p> <p>下面是该语句的部分查询结果：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>       s                   p             o
+
+db:genre/12 [http]	:genreName	&quot;冒险&quot;
+db:genre/12 [http]	rdf:type	:Genre
+db:genre/14 [http]	:genreName	&quot;奇幻&quot;
+db:genre/14 [http]	rdf:type	:Genre
+db:genre/16 [http]	:genreName	&quot;动画&quot;
+db:genre/16 [http]	rdf:type	:Genre
+db:genre/18 [http]	:genreName 	&quot;剧情&quot;
+db:genre/18 [http]	rdf:type	:Genre
+db:genre/27 [http]	:genreName	&quot;恐怖&quot;
+db:genre/27 [http]	rdf:type    :Genre
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div><p>“周星驰出演了哪些电影”：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PREFIX : &amp;lt;http://www.kgdemo.com#&gt;
+PREFIX rdf: &amp;lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX owl: &amp;lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX xsd: &amp;lt;XML Schema&gt;
+PREFIX vocab: &amp;lt;http://localhost:2020/resource/vocab/&gt;
+PREFIX rdfs: &amp;lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX map: &amp;lt;http://localhost:2020/resource/#&gt;
+PREFIX db: &amp;lt;http://localhost:2020/resource/&gt;
+
+SELECT ?n WHERE {
+  ?s rdf:type :Person.
+  ?s :personName '周星驰'.
+  ?s :hasActedIn ?o.
+  ?o :movieTitle ?n
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>部分结果：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>n
+
+&quot;功夫&quot;
+&quot;琉璃樽&quot;
+&quot;英雄本色&quot;
+&quot;少林足球&quot;
+&quot;西游记第壹佰零壹回之月光宝盒&quot;
+&quot;长江七号&quot;
+&quot;西游记大结局之仙履奇缘&quot;
+&quot;建国大业&quot;
+&quot;审死官&quot;
+&quot;龙在天涯&quot;
+&quot;大内密探零零发&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><p>就我们这个例子而言，可以不要“?s rdf:type :Person”，这里只是让查询图更具体（在拥有复杂关系的RDF图中，可能会存在不同的类拥有相同的属性名。比如，猫和狗名字的属性名都是&quot;name&quot;，我们想查询一只叫汤姆的猫；如果不指定类型，返回结果可能也包含一只叫汤姆的狗）。<strong>图模式中，每个RDF用英文句号进行分割</strong>。</p> <p>“英雄这部电影有哪些演员参演”：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PREFIX : &amp;lt;http://www.kgdemo.com#&gt;
+PREFIX rdf: &amp;lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX owl: &amp;lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX xsd: &amp;lt;XML Schema&gt;
+PREFIX vocab: &amp;lt;http://localhost:2020/resource/vocab/&gt;
+PREFIX rdfs: &amp;lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX map: &amp;lt;http://localhost:2020/resource/#&gt;
+PREFIX db: &amp;lt;http://localhost:2020/resource/&gt;
+
+SELECT ?n WHERE {
+  ?s rdf:type :Movie.
+  ?s :movieTitle '英雄'.
+  ?a :hasActedIn ?s.
+  ?a :personName ?n
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p>结果：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>n
+
+&quot;李连杰&quot;
+&quot;梁朝伟&quot;
+&quot;张曼玉&quot;
+&quot;章子怡&quot;
+&quot;甄子丹&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>“巩俐参演的评分大于7的电影有哪些”：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>PREFIX : &amp;lt;http://www.kgdemo.com#&gt;
+PREFIX rdf: &amp;lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;
+PREFIX owl: &amp;lt;http://www.w3.org/2002/07/owl#&gt;
+PREFIX xsd: &amp;lt;XML Schema&gt;
+PREFIX vocab: &amp;lt;http://localhost:2020/resource/vocab/&gt;
+PREFIX rdfs: &amp;lt;http://www.w3.org/2000/01/rdf-schema#&gt;
+PREFIX map: &amp;lt;http://localhost:2020/resource/#&gt;
+PREFIX db: &amp;lt;http://localhost:2020/resource/&gt;
+
+SELECT ?n WHERE {
+  ?s rdf:type :Person.
+  ?s :personName '巩俐'.
+  ?s :hasActedIn ?o.
+  ?o :movieTitle ?n.
+  ?o :movieRating ?r.
+FILTER (?r &gt;= 7)
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p>结果：</p> <div class="language-text line-numbers-mode"><pre class="language-text"><code>n
+
+&quot;2046&quot;
+&quot;Memoirs of a Geisha&quot;
+&quot;荆轲刺秦王&quot;
+&quot;大红灯笼高高挂&quot;
+&quot;霸王别姬&quot;
+&quot;活着&quot;
+&quot;唐伯虎点秋香&quot;
+&quot;秋菊打官司&quot;
+&quot;菊豆&quot;
+&quot;Hong gao liang&quot;
+&quot;画魂&quot;
+&quot;风月&quot;
+&quot;Piao Liang Ma Ma&quot;
+&quot;The Hand&quot;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>这里我们用到了FILTER关键词，可以对变量取值进行约束。</p> <p>SPARQL更详细的语法和功能这里就不再多做介绍。读者可以参考W3C的<a href="https://link.zhihu.com/?target=https%3A//www.w3.org/TR/rdf-sparql-query/" target="_blank" rel="noopener noreferrer">文档<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>或者SPARQL查询的<a href="https://link.zhihu.com/?target=https%3A//www.w3.org/2009/Talks/0615-qbe/" target="_blank" rel="noopener noreferrer">例子<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，也有专门的书来讲解SPARQL 1.1（Learning SPARQL: Querying and Updating with SPARQL 1.1）</p> <p><strong>开放世界假设：</strong></p> <p>另外多提一点，关于知识图谱，有一个非常重要的概念，即开放世界假定（<a href="https://link.zhihu.com/?target=https%3A//www.wikiwand.com/en/Open-world_assumption" target="_blank" rel="noopener noreferrer">Open-world assumption，OWA<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>）。这个假定的意思是当前没有陈述的事情是未知的，或者说知识图谱没有包含的信息是未知的。怎么理解？首先我们要承认知识图谱无法包含所有完整的信息。以我们这个电影数据的例子而言，很明显，它的数据十分残缺。即使我们拥有一个十分完整的电影知识图谱，包含了当下所有的电影、演员等信息，在现实世界中，信息也是动态变化和增长的。即，我们要承认知识图谱的信息本身就是残缺的。有了这个前提，我们来思考例子中的第二个SPARQL语句：</p> <p>周星驰出演了上述查询结果中的电影。基于我们构建的电影知识图谱，提问：周星驰出演了《卧虎藏龙》吗？根据OWA，我们得到的答案是“不知道”，相反，如果是封闭世界假定（Closed-world assumption），我们得到的答案是“没有出演”。</p> <p>我们在设计本体和开发相关应用的时候需要考虑开放世界假定。举个简单的例子，基于知识图谱的问答系统，用户提问“周星驰出演了《卧虎藏龙》吗？”，合适的回答是“不知道”而不是“没有出演”。直觉上这和一个人向另一个人提这个问题一样，如果我们知道问题答案，我们会给出肯定的回答，不知道的话，我们往往倾向于回复“我不知道”，“我不太清楚”，“我查查看”，而不是信誓旦旦地回答“没有出演”。毕竟，大多数人都有“自知之明”，知道自己总有不了解的东西。从这个角度上说，人和知识图谱类似，我们都存在于OWA的世界中。</p> <h4 id="语法介绍"><a href="#语法介绍" class="header-anchor">#</a> 语法介绍：</h4> <h2 id="三、总结"><a href="#三、总结" class="header-anchor">#</a> 三、总结</h2> <p>本文主要介绍了RDF查询语言SPARQL及其基本用法，希望能让读者对SPARQL有个初步的认识。下一篇文章是实践篇，介绍如何利用D2RQ创建SPARQL endpoint并在我们的数据上进行相关查询。</p> <h2 id="参考资料"><a href="#参考资料" class="header-anchor">#</a> 参考资料</h2> <ol><li><p><a href="https://link.zhihu.com/?target=https%3A//www.cambridgesemantics.com/blog/semantic-university/learn-sparql/" target="_blank" rel="noopener noreferrer">Learn SPARQL - Cambridge Semantics<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://link.zhihu.com/?target=https%3A//www.w3.org/2009/Talks/0615-qbe/" target="_blank" rel="noopener noreferrer">SPARQL By Example<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li> <li><p><a href="https://link.zhihu.com/?target=https%3A//www.w3.org/TR/rdf-sparql-query/" target="_blank" rel="noopener noreferrer">SPARQL Query Language for RDF<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></li></ol></div></section> <footer class="page-edit"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">1/31/2023, 12:42:19 PM</span></div></footer> <!----> <div class="comments-wrapper"><!----></div></main></div> <!----></div> <ul class="sub-sidebar sub-sidebar-wrapper" style="width:12rem;" data-v-b57cc07c data-v-7dd95ae2><li class="level-2" data-v-b57cc07c><a href="/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/2023-01-30-SPARQL.html#一、sparql" class="sidebar-link reco-side-一、sparql" data-v-b57cc07c>一、SPARQL</a></li><li class="level-2" data-v-b57cc07c><a href="/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/2023-01-30-SPARQL.html#二、例子" class="sidebar-link reco-side-二、例子" data-v-b57cc07c>二、例子</a></li><li class="level-2" data-v-b57cc07c><a href="/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/2023-01-30-SPARQL.html#三、总结" class="sidebar-link reco-side-三、总结" data-v-b57cc07c>三、总结</a></li><li class="level-2" data-v-b57cc07c><a href="/blogs/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/2023-01-30-SPARQL.html#参考资料" class="sidebar-link reco-side-参考资料" data-v-b57cc07c>参考资料</a></li></ul></div></div></div><div class="global-ui"><div class="back-to-ceiling" style="right:1rem;bottom:6rem;width:2.5rem;height:2.5rem;border-radius:.25rem;line-height:2.5rem;display:none;" data-v-c6073ba8 data-v-c6073ba8><svg t="1574745035067" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5404" class="icon" data-v-c6073ba8><path d="M526.60727968 10.90185116a27.675 27.675 0 0 0-29.21455937 0c-131.36607665 82.28402758-218.69155461 228.01873535-218.69155402 394.07834331a462.20625001 462.20625001 0 0 0 5.36959153 69.94390903c1.00431239 6.55289093-0.34802892 13.13561351-3.76865779 18.80351572-32.63518765 54.11355614-51.75690182 118.55860487-51.7569018 187.94566865a371.06718723 371.06718723 0 0 0 11.50484808 91.98906777c6.53300375 25.50556257 41.68394495 28.14064038 52.69160883 4.22606766 17.37162448-37.73630017 42.14135425-72.50938081 72.80769204-103.21549295 2.18761121 3.04276886 4.15646224 6.24463696 6.40373557 9.22774369a1871.4375 1871.4375 0 0 0 140.04691725 5.34970492 1866.36093723 1866.36093723 0 0 0 140.04691723-5.34970492c2.24727335-2.98310674 4.21612437-6.18497483 6.3937923-9.2178004 30.66633723 30.70611158 55.4360664 65.4791928 72.80769147 103.21549355 11.00766384 23.91457269 46.15860503 21.27949489 52.69160879-4.22606768a371.15156223 371.15156223 0 0 0 11.514792-91.99901164c0-69.36717486-19.13165746-133.82216804-51.75690182-187.92578088-3.42062944-5.66790279-4.76302748-12.26056868-3.76865837-18.80351632a462.20625001 462.20625001 0 0 0 5.36959269-69.943909c-0.00994388-166.08943902-87.32547796-311.81420293-218.6915546-394.09823051zM605.93803103 357.87693858a93.93749974 93.93749974 0 1 1-187.89594924 6.1e-7 93.93749974 93.93749974 0 0 1 187.89594924-6.1e-7z" p-id="5405" data-v-c6073ba8></path><path d="M429.50777625 765.63860547C429.50777625 803.39355007 466.44236686 1000.39046097 512.00932183 1000.39046097c45.56695499 0 82.4922232-197.00623328 82.5015456-234.7518555 0-37.75494459-36.9345906-68.35043303-82.4922232-68.34111062-45.57627738-0.00932239-82.52019037 30.59548842-82.51086798 68.34111062z" p-id="5406" data-v-c6073ba8></path></svg></div><canvas id="vuepress-canvas-cursor"></canvas><div class="reco-bgm-panel" data-v-b1d3339e><audio id="bgm" src="/bgm/1.mp3" data-v-b1d3339e></audio> <div class="reco-float-box" style="bottom:200px;z-index:999999;display:none;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><img src="/bgm/1.jpg" data-v-b1d3339e></div> <div class="reco-bgm-box" style="left:10px;bottom:10px;z-index:999999;" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="reco-bgm-cover" style="background-image:url(/bgm/1.jpg);" data-v-b1d3339e><div class="mini-operation" style="display:none;" data-v-b1d3339e><i class="reco-bgm reco-bgm-pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play" style="display:none;" data-v-b1d3339e></i></div> <div class="falut-message" style="display:none;" data-v-b1d3339e>
+          播放失败
+        </div></div> <div class="reco-bgm-info" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-music music" data-v-b1d3339e></i>爱你</div> <div class="info-box" data-v-b1d3339e><i class="reco-bgm reco-bgm-artist" data-v-b1d3339e></i>糖蜜</div> <div class="reco-bgm-progress" data-v-b1d3339e><div class="progress-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div> <div class="reco-bgm-operation" data-v-b1d3339e><i class="reco-bgm reco-bgm-last last" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-pause pause" style="display:none;" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-play play" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-next next" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-volume1 volume" data-v-b1d3339e></i> <i class="reco-bgm reco-bgm-mute mute" style="display:none;" data-v-b1d3339e></i> <div class="volume-bar" data-v-b1d3339e><div class="bar" data-v-b1d3339e></div></div></div></div> <div class="reco-bgm-left-box" data-v-b1d3339e data-v-41bcba48 data-v-b1d3339e><i class="reco-bgm reco-bgm-left" data-v-b1d3339e></i></div></div></div></div></div>
+    <script src="/assets/js/app.f6ccd837.js" defer></script><script src="/assets/js/3.35b346e0.js" defer></script><script src="/assets/js/1.1304c970.js" defer></script><script src="/assets/js/24.26d53bf8.js" defer></script>
+  </body>
+</html>
