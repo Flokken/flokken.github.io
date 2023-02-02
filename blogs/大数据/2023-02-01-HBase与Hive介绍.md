@@ -2,12 +2,13 @@
 read_time: true
 show_date: true
 title: "HBase与Hive介绍"
-date: 2023-01-14
+date: 2023-02-02
 tags: [HBase]
 author: flokken
 description: "Learning"
 sidebar: 'auto'
 categories: 
+ - 大数据
 ---
 
 >参考：

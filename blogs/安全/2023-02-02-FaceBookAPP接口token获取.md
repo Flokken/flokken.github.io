@@ -1,0 +1,166 @@
+---
+read_time: true
+show_date: true
+title: "FacebookAPP接口token获取"
+date: 2023-02-02
+tags: [Android逆向]
+author: flokken
+sidebar: 'auto'
+categories: 
+ - 安全
+---
+
+这个文章衍生于一个项目的需求，需要获得fb的一些数据，记录下来免得忘了。
+
+## 思路
+
+​	我们知道，FB官方提供了各种数据接口，但是需要token才能请求数据。如果申请成为meta的开发者，也可以有token，但是什么敏感点的数据比如用户email，搜索内容，post文本等等都不能访问，基本上这个token什么也干不了。但是对于FB的APP而言，如果我们登录了fb的app，他内部会产生一个token，这个token权限是非常高的，基本都能访问，并且好像不会过期，但也有一定的数据上限（还没测出来）。
+
+​	一般来说，获取APP的token有两种办法，一种是直接替换fb里面的io文件，把发送数据包时失败的代码改成成功的代码，可惜我试了没成功。另一种是使用挂钩子的办法，在登录的时候插入一段代码，改变其中的一些函数，进而获取到token。**本文使用frida来获取token。**
+
+## 具体流程
+
+### 环境准备：
+
+>frida 15.2.2（建议在conda里创一个虚拟环境）以及对于server版本
+>
+>夜神模拟器 v7.0.3.2(国际版好点，不然很多广告)
+>
+>facebook APP v373.0.0.31.112-314614979_minAPI23(x86)(nodpi).apk
+>
+>burp suitePro-2021.12.10
+>
+>clash(提供外网代理，ssr也可以，但设置起来更麻烦，推荐clash)
+>
+>SSL_Pinning_Bypass 脚本
+
+### Clash配置
+
+![image-20230202225329618](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202225329618.png)
+
+### Burp设置
+
+1. 打开burp，默认就是新建项目，然后点击下一步。
+
+![image-20230202211132350](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202211132350.png)
+
+2. 选择默认值即可![image-20230202211540061](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202211540061.png)
+
+3. 设置监听端口
+
+   1. 依照顺序打开![image-20230202212440852](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202212440852.png)
+
+      2.设置绑定端口为8888（也可以是其他的，但是后面模拟器的也要一致）![image-20230202212355775](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202212355775.png)
+
+4. 上游代理设置
+
+   因为我们需要监听的数据是需要通过代理软件再转发的，即app数据包->burp->clash->服务器所以要对burp也设置代理
+
+   1. 在user option中设置，如果所监听的数据不需要翻墙，就不用设置
+
+   ![image-20230202225759820](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202225759820.png)
+
+   2. 设置代理，*是所有的意思，7890是clash的代理端口
+
+      ![image-20230202225931779](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202225931779.png)
+
+### 配置夜神模拟器
+
+1. 设置root权限
+
+   ![image-20230202193700841](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202193700841.png)
+
+2. 设置模拟器代理
+
+   1. 查看当前所用网络的ip地址，打开命令提示符，输入ipconfig，找到ipv4地址![image-20230202195648253](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202195648253.png)
+
+   2. 配置代理
+
+      1. 拖拽facebook的安装包到模拟器中即可安装
+
+      2. 长按WLAN，点击修改网络
+
+      ![image-20230202195701158](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202195701158.png)
+
+      
+
+      ​		3. 设置手机代理为burp监听的端口号
+
+      ![image-20230202195726157](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202195726157.png)
+
+      1. 设置夜神模拟器安装路径的bin目录设置为环境变量的path
+
+         1. 打开安装文件位置![image-20230202195733473](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202195733473.png)
+
+         2. 复制路径![image-20230202200554339](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202200554339.png)
+
+         3. 设置环境变量
+
+            1. 搜索env，回车，然后设置系统变量Path![image-20230202200111566](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202200111566.png)
+            2. 新建粘贴刚刚复制的路径![image-20230202200529829](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202200529829.png)
+   
+            3. 打开cmd 输入adb devices，回车验证是否成功添加到环境变量
+         
+               ![image-20230202233148006](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202233148006.png)
+   
+
+### frida配置
+
+​	1.首先在PC端，打开anconda prompt，创建一个虚拟环境，安装conda，再安装frida，可以pip安装，frida --version显示版本号即为安装成功
+
+![image-20230202230133124](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202230133124.png)
+
+2. 然后在手机端安装server
+
+   1. 打开cmd，复制server文件所在文件夹
+
+      ![image-20230202230316622](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202230316622.png)
+
+   2. 将该server文件推入adb中`adb push frida-server-15.2.2-android-x86 /data/local/tmp/`
+
+   3. 设置执行权限，并执行,输入一下命令
+
+      ```shell
+      cd /data/local/tmp
+      chmod 777 frida-server-15.2.2-android-x86
+      ./frida-server-15.2.2-android-x86 &
+      ```
+
+   4. 上面的过程如下
+
+      ![image-20230202230549863](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202230549863.png)
+
+   5. 电脑打开anconda  prompt，激活frida环境，输入`frida-ps -U`显示出adb中的进程即为成功
+
+      ![image-20230202230702957](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202230702957.png)
+
+3. 执行脚本，注意脚本要放在对应的目录，比如这里的脚本放在了
+
+   ![image-20230202230843422](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202230843422.png)
+
+4. 这个脚本会自动打开模拟器中的facebook，我们输入账号密码登录，这时注意burp会默认拦截请求，切换回burp，要让其通过。然后会收到验证码，输入验证码登录，继续切换回burp，放行数据包。
+
+   ![image-20230202231022906](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202231022906.png)
+
+5. 然后就可以成功抓到数据包了。FB查询数据使用的是其自己开发的graphsql，其中带有token。
+
+   ![image-20230202231254082](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202231254082.png)
+
+   
+
+6. Qauth即所需token
+
+   ![image-20230202231423144](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230202231423144.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
