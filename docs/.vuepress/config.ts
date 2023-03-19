@@ -279,6 +279,12 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
       },
     ],
     [
+      // 支持数学公式
+      // https://vuepress.github.io/zh/plugins/mathjax/
+      // npm install -D vuepress-plugin-mathjax
+      'vuepress-plugin-mathjax',
+    ],  
+    [
       'vuepress-plugin-zooming', // 放大图片
       {
         selector: '.theme-vdoing-content img:not(.no-zoom)', // 排除class是no-zoom的图片
@@ -314,6 +320,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
           return dayjs(timestamp).format('YYYY/MM/DD, HH:mm:ss')
         },
       },
+
     ],
   ],
 
@@ -321,7 +328,6 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
     lineNumbers: true,
     extractHeaders: ['h2', 'h3', 'h4', 'h5', 'h6'], // 提取标题到侧边栏的级别，默认['h2', 'h3']
   },
-
   // 监听文件变化并重新构建
   extraWatchFiles: [
     '.vuepress/config.ts',
