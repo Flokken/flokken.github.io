@@ -7,6 +7,7 @@ import { VdoingThemeConfig } from 'vuepress-theme-vdoing/types'
 import dayjs from 'dayjs'
 import baiduCode from './config/baiduCode' // 百度统计hm码
 import htmlModules from './config/htmlModules' // 自定义插入的html块
+import { mdEnhancePlugin } from "vuepress-plugin-md-enhance";
 
 export default defineConfig4CustomTheme<VdoingThemeConfig>({
   theme: 'vdoing', // 使用npm主题包
@@ -212,6 +213,12 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
   // 插件配置
   plugins: <UserPlugins>[
 
+
+    mdEnhancePlugin({
+      // your options
+      KatexOptions:true
+    }),
+
     'vuepress-plugin-baidu-autopush', // 百度自动推送
 
     [
@@ -277,12 +284,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         },
       },
     ],
-    [
-      // 支持数学公式
-      // https://vuepress.github.io/zh/plugins/mathjax/
-      // npm install -D vuepress-plugin-mathjax
-      'vuepress-plugin-mathjax',
-    ],  
+    
     [
       'vuepress-plugin-zooming', // 放大图片
       {
