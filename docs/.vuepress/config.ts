@@ -45,7 +45,6 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         //link: '/backend/',
         items: [
           { text: 'JavaSE', link: '/java/' },
-          { text: 'JavaWeb', link: '/javaweb/' },
         ],
       },
       {
