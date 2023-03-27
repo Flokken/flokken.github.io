@@ -82,6 +82,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         //link: '/other/',
         items: [
           { text: '收藏', link: '/pages/8924d1/' },
+          { text: '小知识', link: '/tips/' },
         ],
       },
     ],
@@ -211,7 +212,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 
   // 插件配置
   plugins: <UserPlugins>[
-    "vuepress-plugin-mathjax",
+    "vuepress-plugin-mathjax",//支持公式
 
     'vuepress-plugin-baidu-autopush', // 百度自动推送
 
