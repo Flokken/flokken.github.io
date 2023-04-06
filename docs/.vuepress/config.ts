@@ -66,7 +66,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         //link: '/about/',
         items:[
           { text:'Spark',link:'/spark/'},
-          { text:'Spider',link:'/spider'},
+          { text:'Spider',link:'/spider/'},
           { text:'MySQL',link:'/mysql/'},
         ]
       },
