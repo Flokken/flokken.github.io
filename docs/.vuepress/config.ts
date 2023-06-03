@@ -44,7 +44,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         text: '后端开发',
         //link: '/backend/',
         items: [
-          { text: 'JavaSE', link: '/java/' },
+          { text: 'Java开发', link: '/java/' },
         ],
       },
       {
