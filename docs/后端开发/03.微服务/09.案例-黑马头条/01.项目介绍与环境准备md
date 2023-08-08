@@ -1,0 +1,79 @@
+---
+title: 项目介绍与环境准备
+date: 2023-08-08
+categories: 
+  - 后端开发
+  - 微服务	
+  - 案例-黑马头条
+---
+
+## 简介
+
+随着智能手机的普及，人们更加习惯于通过手机来看新闻。由于生活节奏的加快，很多人只能利用碎片时间来获取信息，因此，对于移动资讯客户端的需求也越来越高。黑马头条项目正是在这样背景下开发出来。**黑马头条项目采用当下火热的微服务+大数据技术架构实现**。本项目主要着手于**获取最新最热新闻资讯**，通过大数据分析用户喜好**精确推送咨询新闻**
+
+**项目术语**
+
+<img src="https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230808094315902.png" style="zoom:70%">
+
+**业务说明**
+
+![image-20230808094428856](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230808094428856.png)
+
+**技术栈**
+
+![img](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/f3accd2ba01c41b0a9ac98370241eba3.png)
+
+- Spring-Cloud-Gateway : 微服务之前架设的网关服务，实现服务注册中的API请求路由，以及控制流速控制和熔断处理都是常用的架构手段，而这些功能Gateway天然支持
+- 运用Spring Boot快速开发框架，构建项目工程；并结合Spring Cloud全家桶技术，实现后端个人中心、自媒体、管理中心等微服务的注册中心和配置中心
+- 运用mybatis-plus作为持久层提升开发效率
+- 运用Kafka完成内部系统消息通知；与客户端系统消息通知；以及实时数据计算
+- 运用Redis缓存技术，实现热数据的计算，提升系统性能指标
+- 使用Mysql存储用户数据，以保证上层数据查询的高性能
+- 使用Mongo存储用户热数据，以保证用户热数据高扩展和高性能指标
+- 使用FastDFS作为静态资源存储器，在其上实现热静态资源缓存、淘汰等功能
+- 运用Hbase技术，存储系统中的冷数据，保证系统数据的可靠性
+- 运用ES搜索技术，对冷数据、文章数据建立索引，以保证冷数据、文章查询性能
+- 运用AI技术，来完成系统自动化功能，以提升效率及节省成本。比如实名认证自动化
+- PMD&P3C : 静态代码扫描工具，在项目中扫描项目代码，检查异常点、优化点、代码规范等，为开发团队提供规范统一，提升项目代码质量
+
+## 环境准备
+
+### nacos
+
+docker拉取镜像 
+
+```shell
+docker pull nacos/nacos-server:1.2.0
+```
+
+创建容器
+
+```shell
+docker run --env MODE=standalone --name nacosy-test --restart=always  -d -p 8849:8848 nacos/nacos-server:1.2.0
+```
+
+- MODE=standalone 单机版
+
+- --restart=always 开机启动
+
+- -p 8849:8848  映射端口
+
+- -d 创建一个守护式容器在后台运行
+
+> 访问地址：http://10.245.142.208:8849/nacos 
+>
+> (更换服务器ip)
+
+![image-20230808095153116](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230808095153116.png)
+
+### springboot项目
+
+> 解压提供的`heima-leadnews.zip`,注意，所有文件目录要保证没有中文和特殊符号
+
+![image-20230808103731182](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230808103731182.png)
+
+各个模块解释
+
+![image-20230808103741119](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230808103741119.png)
+
+### 测试工具
