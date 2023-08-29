@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           # 选择要使用的 node 版本
-          node-version: '16'
+          node-version: '18'
 
       # 缓存 node_modules，注意，如果有npm新装包，需要删除缓存重新安装！
       - name: Cache dependencies
