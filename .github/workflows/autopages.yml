@@ -18,23 +18,23 @@ jobs:
         uses: actions/setup-node@v1
         with:
           # 选择要使用的 node 版本
-          node-version: '18'
+          node-version: '16'
 
       # 缓存 node_modules，注意，如果有npm新装包，需要删除缓存重新安装！
       - name: Cache dependencies
         uses: actions/cache@v2
-        id: yarn-cache
+        id: npm-cache
         with:
           path: |
             **/node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          key: ${{ runner.os }}-npm-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
-            ${{ runner.os }}-yarn-
+            ${{ runner.os }}-npm-
 
       # 如果缓存没有命中，安装依赖
       - name: Install dependencies
-        if: steps.yarn-cache.outputs.cache-hit != 'true'
-        run: yarn --frozen-lockfile
+        if: steps.npm-cache.outputs.cache-hit != 'true'
+        run: npm install
 
       # 运行构建脚本
       - name: Build VuePress site
