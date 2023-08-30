@@ -2,7 +2,8 @@
 
 # 确保脚本抛出遇到的错误
 set -e
-
+#node16和18之间的openssl不兼容错误，手动设置openSSL
+set NODE_OPTIONS=--openssl-legacy-provider
 
 push_addr=`git remote get-url --push origin` # git提交地址，也可以手动设置，比如：push_addr=git@github.com:xugaoyi/vuepress-theme-vdoing.git
 commit_info=`git describe --all --always --long`
