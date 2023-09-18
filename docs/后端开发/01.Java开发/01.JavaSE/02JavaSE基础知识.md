@@ -210,6 +210,8 @@ public class ScannerDemo1{
 * 取值范围小的，和取值范围大的进行运算，小的会先提升为大的，再进行运算。
   * 取值范围大小  double>float>long>int>short>byte
 * byte、short、char三种类型的数据在运算的时候，都会直接先提升为int，然后再进行运算。
+  * 注意chat类型，比如`char x = 'a'; x>='a'`,这种是成立的，`'a'`会自动的转成ascii码表的对应数字来进行运算，**常用的有，字母大小写判断，字符'0-9'和数字0-9的判断等等**
+
 
 ~~~java
 byte b = 100;
