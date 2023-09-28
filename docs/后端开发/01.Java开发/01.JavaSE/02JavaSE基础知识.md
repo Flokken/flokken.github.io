@@ -298,6 +298,8 @@ public class Test{
 >
 >​	但是byte类型，short类型，int类型的数据是可以存到这个数组里面的。
 
+#### 创建数组
+
 **定义数组：**
 
 - ​	数据类型 [] 数组名    比如：int [] array（常用）
@@ -490,6 +492,69 @@ public class MethodDemo {
 <img src="https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20230911170830553.png" style="zoom:70%">
 
 
+
+### 可变参数
+
+> JDK5提出
+>
+> 
+
+意思就是方法对的形参的个数可以变化的，从0到n个数
+
+格式为`类型...args`，
+
+> 可变参数的底层其实还是一个数组，只不过java自动创建了，所以使用的时候安装数据来用就行
+
+细节：
+
+- 1形参中只能有一个可变参数
+- **2 如果有其他参数，可变参数必须写在形参列表的最后**
+
+举例：
+
+求n个数的和
+
+~~~java
+
+public class Test {
+    public static void main(String[] args) {
+        
+        int sum = getSum(1,2,3,4,5);
+    }
+    public static int getSum(int...args){
+         System.out.println(args);//[I@4eec7777
+        //I是int类型，@是固定格式，4eec7777才是地址
+        int sum=0;
+        for (int i:args){
+            sum=sum+i;
+        }
+        return sum;
+    }
+}
+~~~
+
+**应用场景: Collections**
+
+​	在Collections中的`addAll`就是用的可变参数
+
+​	`public static <T> boolean addAll(Collection<T> c, T... elements)  `:往集合中添加一些元素。
+
+**代码演示:**
+
+```java
+public class CollectionsDemo {
+	public static void main(String[] args) {
+      ArrayList<Integer> list = new ArrayList<Integer>();
+      //原来写法
+      //list.add(12);
+      //list.add(14);
+      //list.add(15);
+      //list.add(1000);
+      //采用工具类 完成 往集合中添加元素  
+      Collections.addAll(list, 5, 222, 1，2);
+      System.out.println(list);
+}
+```
 
 ## 杂
 
