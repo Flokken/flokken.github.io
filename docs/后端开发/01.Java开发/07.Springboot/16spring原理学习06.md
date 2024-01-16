@@ -11,11 +11,15 @@ categories:
 
 ## 目标
 
+**bg：**
+
 使用spring时，我们有时会继承或者实现了 Spring 对外暴露的类或接口，在接口的实现中获取了 BeanFactory 以及 Bean 对象的获取等内容，并对这些内容做一些操作，例如：修改 Bean 的信息，添加日志打印、处理数据库路由对数据源的切换、给 RPC 服务连接注册中心等。
 
 在对容器中 Bean 的实例化过程添加扩展机制的同时，还需要把目前关于 Spring.xml 初始化和加载策略进行优化，因为我们不太可能让面向 Spring 本身开发的 `DefaultListableBeanFactory` 服务，直接给予用户使用。修改点如下：
 
 ![img](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/spring-7-01.png)
+
+目标（开发应用上下文和Bean拓展机制）：
 
 - DefaultListableBeanFactory、XmlBeanDefinitionReader，是我们在目前 Spring 框架中对于服务功能测试的使用方式，它能很好的体现出 Spring 是如何对 xml 加载以及注册Bean对象的操作过程，**但这种方式是面向 Spring 本身的，还不具备一定的扩展性**。
 - 就像我们现在需要提供出一个可以在 Bean 初始化过程中，完成对 Bean 对象的扩展时，就很难做到自动化处理**。所以我们要把 Bean 对象扩展机制功能和对 Spring 框架上下文的包装融合起来，对外提供完整的服务。**
@@ -543,7 +547,7 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
         <property name="location" value="深圳"/>
         <property name="userDao" ref="userDao"/>
     </bean>
-
+	<!--这个应该即时所谓的应用上下文?-->
     <bean class="cn.bugstack.springframework.test.common.MyBeanPostProcessor"/>
     <bean class="cn.bugstack.springframework.test.common.MyBeanFactoryPostProcessor"/>
 
@@ -553,7 +557,155 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
 
 - 这里提供了两个配置文件，一个是不包含BeanFactoryPostProcessor、BeanPostProcessor，另外一个是包含的。**之所以这样配置主要对照验证，在运用 Spring 新增加的应用上下文和不使用的时候，都是怎么操作的。**
 
-### 不使用应用上下文
+### 对比
+
+本节主要开发了应用上下文类，以及实现Bean的拓展机制。
+
+这里开发的应用上下文类，主要就是可以通过加载配置文件来使用`BeanFactoryPostProcessor`和`BeanPostProcessor`接口的实现类。
+
+这样就不用用户手动来操作这两个接口实现类的使用 ，而是直接加载配置文件即可自动执行，**便于用户。**
+
+#### 不使用应用上下文
+
+```java
+   @Test
+    public void test_BeanFactoryPostProcessorAndBeanPostProcessor() {
+        //1.初始化BeanFactory
+        DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
+        // 2. 读取配置文件&注册Bean
+        XmlBeanDefinitionReader reader =  new XmlBeanDefinitionReader(beanFactory);
+        reader.loadBeanDefinitions("classpath:spring.xml");
+        //这个类加载下面这个配置文件也执行不了对应操作，得用上文文加载类才能加载
+        //        reader.loadBeanDefinitions("classpath:springPostProcessor.xml");
+        // 3. BeanDefinition 加载完成 & Bean实例化之前，修改 BeanDefinition 的属性值
+        MyBeanFactoryPostProcessor beanFactoryPostProcessor = new MyBeanFactoryPostProcessor();
+        beanFactoryPostProcessor.postProcessBeanFactory(beanFactory);
+        //4. Bean实例化之后，修改Bean的属性信息
+        //TODO 对实例化的bean对象进行属性填充，需要用到反射，对应方法还没实现，下一节再说
+//        MyBeanPostProcessor beanPostProcessor = new MyBeanPostProcessor();
+//        beanFactory.addBeanPostProcessor(beanPostProcessor);
+        //5.获取Bean对象调用方法
+        UserService userService = beanFactory.getBean("userService",UserService.class);
+        String result = userService.queryUserInfo();
+        System.out.println("测试结果：" + result);
+
+    }
+```
+
+- DefaultListableBeanFactory 创建 beanFactory 并使用 XmlBeanDefinitionReader 加载配置文件。
+- 接下来就是对 MyBeanFactoryPostProcessor 和 MyBeanPostProcessor 的处理，一个是在BeanDefinition 加载完成 & Bean实例化之前，修改 BeanDefinition 的属性值，另外一个是在Bean实例化之后，修改 Bean 属性信息。
+
+> 用户还需要了解这两个类内部怎么去使用，很不方便，因此应用上下文加载类很有必要
+
+#### 使用应用上下文
+
+```java
+ @Test
+    public void test_xml() {
+        // 1.初始化 BeanFactory
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:springPostProcessor.xml");
+
+        // 2. 获取Bean对象调用方法
+        UserService userService = applicationContext.getBean("userService", UserService.class);
+        String result = userService.queryUserInfo();
+        System.out.println("测试结果：" + result);
+    }
+```
+
+- 另外使用新增加的 ClassPathXmlApplicationContext 应用上下文类，再操作起来就方便多了，*这才是面向用户使用的类*，在这里可以一步把配置文件交给 ClassPathXmlApplicationContext，也不需要管理一些自定义实现的 Spring 接口的类。
+
+#### 结果：
+
+上面两个测试的结果都是下面这样。
+
+地点没有改变，因为对实例化的bean对象进行属性填充，需要用到反射，对应方法还没实现，下一节再说。
+
+但是可以看到应用上下文和Bean的拓展机制的确生效了
+
+![image-20240116091705878](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20240116091705878.png)
 
 
 
+## STAR法则总结
+
+### Situation
+
+创建ApplicationContext 并且实现加载配置文件实现应用上下文，同时融合实现Bean拓展机制。
+
+### Task
+
+ 1、创建Application上下文类体系
+
+ 2、实现BeanFactoryPostProcessor，以及BeanPostProcessor处理 
+
+### Aciton
+
+**一、什么是应用上下文** 
+
+spring源码中的解释:`Central interface to provide configuration for an application`。应用上下文是为应用提供环境/配置的。
+
+这里的代码中，主要体现在这个应用上下文可以通过修改`BeanFactory`的方式，来为BeanFactory提供用户所给的修改。
+
+ **二、应用上下文在干些什么**
+
+ a. 加载XML 
+
+b. 修改BeanDefinition
+
+ c. Bean的扩展 
+
+d. Bean的实例化
+
+ **三、两大类接口** 
+
+- -BeanFactoryPostProcess:如名，在Factory之后的处理器，那就是在BeanDefinition初始化之后。
+-  -BeanPostProcessor:如名，在Bean之后的处理器，那就是在Bean初始化之后，但这个接口提供了在Bean初始化前后都有 这一章的操作也基本上环绕着这两个接口需要的操作以及应用上下文在干什么去进行
+
+**四、如何实现**
+
+1.处理两个接口 
+
+BeanFactoryPostProcessor
+
+- 提供postProcessBeanFactory去处理postProcessBeanFactory 
+
+BeanPostProcessor
+
+-  提供postProcessBeforeInitialization以及postProcessAfterInitialization方法，去处理Bean实例化前后的处理。
+
+2.应用上下文处理
+
+ ApplicationContext：应用上下文接口，继承了一个ListableBeanFactory，也就继承了一些BeanFactory的方法，包括getBean等。 -ConfigurableApplicationContext：继承ApplicationContext接口，内置refresh，这是一个核心方法，用来刷新容器。
+
+> 刷新容器，顾名思义，就是对容器中的bean对象进行改变、刷新 **因为拓展Bean就是用户对Bean有了修改，所以刷新就是应用这些修改**
+
+AbstractApplicationContext：这里应用了模板模式，实现类`refresh()`的流程，其实也就是上下文干了什么。
+
+- a. 创建BeanFactory，加载注册BeanDefinition 
+- b. 获取BeanFactory
+-  c. 执行BeanFactoryPostProcessor
+-  d.注册、 把Bean中载入的BeanPostProcessor加载进BeanFactory，在createBean的时候再去调用
+-  e. 直接调用方法，创建Bean对象 
+
+它像是对BeanFatory的包装，它里面藏了一个新建的BeanFactory，并对他进行读取XML、加载/修改BeanDefinition、扩展Bean对象、Bean的实例化。并对外提供Bean的获取方法，那么以后对bean的管理就完全可以通过Context来进行。 
+
+并且这个模板模式就需要把抽象方法让下面的子类一个个完成了，这里用了多次继承，**就是想让一个抽象类完成一类方法，让类的职责更加清晰：**
+
+- AbstractRefreshableApplicationContext-它来进行DefaultListableBeanFactory的创建
+- AbstractXmlApplicationContext-他来调用xmlBeanDefinitionReader进行BeanFactory的xml资源加载，ApplicationContex是继承了DefaultResourceLoader的，所以可以解析资源。 
+- ClassPathXmlApplicationContext，这里是最终向外提供的接口，用来让应用中提供配置文件具体在哪，并返回用户上下文。
+
+ 最后，回到AbstractAutowireCapableBeanFactory，它是专门负责创建bean的抽象类，在createBean的时候要来调用我们的BeanPostProcessor，遍历调用所有BeanPostProcessor，并分别执行before和after方法。 
+
+- 这里注意，`BeanPostProcessor`放在了AbstractBeanFactory中，`private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();`,并且提供add,remove等方法
+- 这里我们需要知道，BeanPostProcessor和BeanFactoryPostProcessor也是BeanFactory可以管理的类，**只不过他们的实现类是用户实现**，当用户实现后，可以注册BeanDefinition去取得已经初始化好的bean实例。
+- 如下所示，我们加载配置文件之后，读取了这两个节点实现类的BeanDefinition，并且实例化为了单例Bean对象
+  - ![image-20240116102519864](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20240116102519864.png)
+
+### Result
+
+这节主要就是应用上下文在容器内部是怎么实现的，通过包装BeanFactory使得其可以加载xml，并且处理Bean的拓展以及实例化。
+
+虽然笔记很多，但是不一定再有时间看，所以总结和流程图很重要！还有就是借鉴别人总结的知识也很重要，不要故步自封。
+
+这也是第一次看到STAR法则，内容也是搬砖别人的，之后尽量自己也要能写出来。
