@@ -395,6 +395,38 @@ public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport imp
 
 ## 测试
 
+### 准备
+
+```java
+public interface IUserDao {
+
+    String queryUserName(String uId);
+
+}
+ 
+```
+
+- 这个章节我们删掉 UserDao，定义一个 IUserDao 接口，**之所这样做是为了通过 FactoryBean 做一个自定义对象的代理操作**。
+
+```java
+public class UserService {
+
+    private String uId;
+    private String company;
+    private String location;
+    private IUserDao userDao;
+
+    public String queryUserInfo() {
+        return userDao.queryUserName(uId) + "," + company + "," + location;
+    }
+
+    // ...get/set
+}
+
+```
+
+- 在 UserService 新修改了一个原有 UserDao 属性为 IUserDao，后面我们会给这个属性注入代理对象。
+
 ### 定义 FactoryBean 对象
 
 ```java
@@ -435,7 +467,55 @@ public class ProxyBeanFactory implements FactoryBean<IUserDao> {
 - 从测试结果来看，我们的代理类 ProxyBeanFactory 已经完美替换掉了 UserDao 的功能。
 - 虽然看上去这一点实现并不复杂，甚至有点简单。但就是这样一点点核心内容的设计了，解决了所有需要和 Spring 结合的其他框架交互链接问题
 
+###  配置文件
 
+```java
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+
+    <bean id="userService" class="cn.bugstack.springframework.test.bean.UserService" scope="prototype">
+        <property name="uId" value="10001"/>
+        <property name="company" value="腾讯"/>
+        <property name="location" value="深圳"/>
+        <property name="userDao" ref="proxyUserDao"/>
+    </bean>
+
+    <bean id="proxyUserDao" class="cn.bugstack.springframework.test.bean.ProxyBeanFactory"/>
+
+</beans>
+
+```
+
+- 在配置文件中，我们把 proxyUserDao 这个代理对象，注入到 userService 的 userDao 中。与上一章节相比，去掉了 UserDao 实现类，转而用代理类替换
+- 原来bean配置文件中的`scpoe`是指bean对象时什么类型的，比如这里的单例/原型
+
+###  单元测试(单例&原型)
+
+```java
+@Test
+public void test_prototype() {
+    // 1.初始化 BeanFactory
+    ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+    applicationContext.registerShutdownHook();   
+
+    // 2. 获取Bean对象调用方法
+    UserService userService01 = applicationContext.getBean("userService", UserService.class);
+    UserService userService02 = applicationContext.getBean("userService", UserService.class);
+    
+    // 3. 配置 scope="prototype/singleton"
+    System.out.println(userService01);
+    System.out.println(userService02);    
+
+    // 4. 打印十六进制哈希
+    System.out.println(userService01 + " 十六进制哈希：" + Integer.toHexString(userService01.hashCode()));
+    System.out.println(ClassLayout.parseInstance(userService01).toPrintable());
+
+}
+
+```
+
+- 在 spring.xml 配置文件中，设置了 scope="prototype" 这样就每次获取到的对象都应该是一个新的对象。
+- 这里判断对象是否为一个会看到打印的类对象的哈希值，所以我们把十六进制哈希打印出来。
 
 ### 结果
 
@@ -470,9 +550,26 @@ Space losses: 3 bytes internal + 0 bytes external = 3 bytes total
 
 ```
 
+- 对象后面的这一小段字符串就是16进制哈希值，在对象头哈希值存放的结果上看，也有对应的数值。只不过这个结果是倒过来的。
+- 另外可以看到 cabb984@1b0375b3、cabb984@2f7c7260，这两个对象的结尾16进制哈希值并不一样，所以我们的原型模式是生效的。
 
+###  单元测试
 
+```java
+@Test
+public void test_factory_bean() {
+    // 1.初始化 BeanFactory
+    ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:spring.xml");
+    applicationContext.registerShutdownHook(); 
 
+    // 2. 调用代理方法
+    UserService userService = applicationContext.getBean("userService", UserService.class);
+    System.out.println("测试结果：" + userService.queryUserInfo());
+}
+
+```
+
+- 关于 FactoryBean 的调用并没有太多不一样，因为所有的不同都已经被 spring.xml 配置进去了。当然你可以直接调用 spring.xml 配置的对象 `cn.bugstack.springframework.test.bean.ProxyBeanFactory`
 
 ## STAR总结
 
