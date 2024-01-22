@@ -11,8 +11,6 @@ categories:
 
 ## 目标
 
-**BG**
-
 交给 Spring 管理的 Bean 对象，一定就是我们用类创建出来的 Bean 吗？创建出来的 Bean 就永远是单例的吗，没有可能是原型模式吗？
 
 >之前在Spring框架中，我们在一个类之中（TODO:补充类名）,定义了两个种类型的Bean，即单例和原型模式（实际spring中这也是最基本的两种，其他种类是这两种的衍生），现在解释一下：
@@ -32,8 +30,6 @@ categories:
 
 那么这一过程最核心待解决的问题**，就是需要完成把复杂且以代理方式动态变化的对象，注册到 Spring 容器中。而为了满足这样的一个扩展组件开发的需求，就需要我们在现有手写的 Spring 框架中，添加这一能力**。
 
-**目标：**
-
 ## 方案
 
 **提供一个能让使用者定义复杂的 Bean 对象意义重大**，因为这样做了之后 Spring 的生态种子孵化箱就此提供了，谁家的框架都可以在此标准上完成自己服务的接入。
@@ -48,6 +44,10 @@ categories:
 - `SCOPE_SINGLETON`、`SCOPE_PROTOTYPE`，对象类型的创建获取方式，主要区分在于 `AbstractAutowireCapableBeanFactory#createBean` **创建完成对象后是否放入到内存中，如果不放入则每次获取都会重新创建**。
   - 放入内存就是放入缓存，如果是单例，我们每次就是用的一开始创建那个Bean
 - createBean 执行对象创建、属性填充、依赖加载、前置后置处理、初始化等操作后，就要开始做执行判断整个对象是否是一个 FactoryBean 对象。**如果是这样的对象，就需要再继续执行获取 FactoryBean 具体对象中的 `getObject` 对象了。整个 getBean 过程中都会新增一个单例类型的判断`factory.isSingleton()`，用于决定是否使用内存存放对象信息。**
+
+FactoryBean以及Bean作用域类之间关系如下：
+
+![image-20240122144905474](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20240122144905474.png)
 
 ## 工程结构
 
@@ -221,7 +221,7 @@ public class XmlBeanDefinitionReader extends AbstractBeanDefinitionReader {
 - 在解析 XML 处理类 XmlBeanDefinitionReader 中，新增加了关于 Bean 对象配置中 scope 的解析，并把这个属性信息填充到 Bean 定义中。`beanDefinition.setScope(beanScope)`
   - scpoe属性作用?
 
-### 创建和修改对象时候判断单例和原型模式
+### 创建和修改，销毁对象时候判断单例和原型模式
 
 ```java
 public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFactory implements AutowireCapableBeanFactory {
@@ -265,8 +265,12 @@ public abstract class AbstractAutowireCapableBeanFactory extends AbstractBeanFac
 
 ```
 
-- 单例模式和原型模式的区别就在于是否存放到内存中，如果是原型模式那么就不会存放到内存中，每次获取都重新创建对象，另外非 Singleton 类型的 Bean 不需要执行销毁方法。
-- 所以这里的代码会有两处修改，一处是 createBean 中判断是否添加到 addSingleton(beanName, bean);，另外一处是 registerDisposableBeanIfNecessary 销毁注册中的判断 `if (!beanDefinition.isSingleton()) return;`。
+- 单例模式和原型模式的区别就在于是否存放到内存中，**如果是原型模式那么就不会存放到内存（单例Map）中，每次获取都重新创建对象**
+- **另外非 Singleton 类型的 Bean 不需要执行销毁方法**
+- 所以这里的代码会有两处修改，
+  - 一处是 createBean 中判断是否添加到 addSingleton(beanName, bean);
+  - 另外一处是 registerDisposableBeanIfNecessary 销毁注册中的判断 `if (!beanDefinition.isSingleton()) return;`。
+
 
 ### 定义 FactoryBean 接口
 
@@ -283,16 +287,19 @@ public interface FactoryBean<T> {
 
 ```
 
-- FactoryBean 中需要提供3个方法，获取对象、对象类型，以及是否是单例对象，如果是单例对象依然会被放到内存中。
+- FactoryBean 中需要提供3个方法，获取对象、对象类型，以及是否是单例对象，如果是单例对象依然会被放到内存（factoryBeanObjectCache）中。
+- FactoryBean是用户要自己拓展Bean对象功能时，就去实现这个接口，在`getObject()`中进行Bean对象功能拓展
 
 > 看到这个东西，我想到了beanFactory，这里看一下区别
 >
 > - BeanFactory：Bean工厂，是一个工厂(Factory)，我们Spring IoC容器的最顶层接口就是这个BeanFactory，它的作用是管理Bean，即实例化、定位、配置应用程序中的对象及建立这些对象间的依赖。
 >
 >
-> - FactoryBean：工厂Bean，是一个Bean，作用是产生其他bean实例。通常情况下，这种bean没有什么特别的要求，仅需要提供一个工厂方法，该方法用来返回其他bean实例。
+> - FactoryBean：工厂Bean，是一个Bean，作用是产生其他bean实例。通常情况下，这种bean没有什么特别的要求，仅需要提供一个工厂方法`getObject`，该方法用来返回其他bean实例。
 
 ### 实现一个 FactoryBean 注册服务
+
+>这里的注册就是指从缓存中获取 FactoryBean创建的单例对象，或者缓存中没有，调用factoryBean去创建一个对象（抽象）
 
 ```java
 public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanRegistry {
@@ -334,8 +341,180 @@ public abstract class FactoryBeanRegistrySupport extends DefaultSingletonBeanReg
 
 ```
 
-- FactoryBeanRegistrySupport 类主要处理的就是关于 FactoryBean 此类对象的注册操作，之所以放到这样一个单独的类里，就是希望做到不同领域模块下只负责各自需要完成的功能，避免因为扩展导致类膨胀到难以维护。
+- FactoryBeanRegistrySupport 类**主要处理的就是关于 FactoryBean 此类对象的注册操作**，之所以放到这样一个单独的类里，就是希望做到不同领域模块下只负责各自需要完成的功能，避免因为扩展导致类膨胀到难以维护。
 - **同样这里也定义了缓存操作 factoryBeanObjectCache，用于存放单例类型的对象，避免重复创建。在日常使用用，基本也都是创建的单例对象**
-- doGetObjectFromFactoryBean 是具体的获取 FactoryBean#getObject() 方法，因为既有缓存的处理也有对象的获取，所以额外提供了 getObjectFromFactoryBean 进行逻辑包装，这部分的操作方式是不和你日常做的业务逻辑开发非常相似。*从Redis取数据，如果为空就从数据库获取并写入Redis*
+- doGetObjectFromFactoryBean 是具体的获取 FactoryBean#getObject() 方法，**因为既有缓存的处理也有对象的获取，所以额外提供了 getObjectFromFactoryBean 进行逻辑包装**，这部分的操作方式类似从Redis取数据，如果为空就从数据库获取并写入Redis。
+  - class#method代表这个类下的这个method方法
 
-###  
+
+### 扩展 AbstractBeanFactory 创建对象逻辑
+
+```java
+public abstract class AbstractBeanFactory extends FactoryBeanRegistrySupport implements ConfigurableBeanFactory {
+
+   public <T> T doGetBean(final String name, final Object[] args) throws BeansException{
+        //先去单例对象集合查询是否有，如果没有，会在单例对象集合创建一个Bean
+        Object sharedInstance = getSingleton(name);
+        if(sharedInstance!=null){
+            // 如果是 FactoryBean，则需要调用 FactoryBean#getObject
+            return (T) getObjectForBeanInstance(sharedInstance, name);
+        }
+
+        BeanDefinition beanDefinition = getBeanDefinition(name);
+        Object bean = createBean(name,beanDefinition,args);
+        //这里 return bean;也可以因为这里返回的是BeanFactory创建的对象，只不过getObjectForBeanInstance对非FactoryBean对象不会做出什么处理
+        return (T) getObjectForBeanInstance(bean, name);
+    }
+   
+    private Object getObjectForBeanInstance(Object beanInstance, String beanName) {
+        if (!(beanInstance instanceof FactoryBean)) {
+            return beanInstance;
+        }
+
+        Object object = getCachedObjectForFactoryBean(beanName);
+
+        if (object == null) {
+            FactoryBean<?> factoryBean = (FactoryBean<?>) beanInstance;
+            object = getObjectFromFactoryBean(factoryBean, beanName);
+        }
+
+        return object;
+    }
+        
+    // ...
+}
+
+```
+
+- 首先这里把 AbstractBeanFactory 原来继承的 DefaultSingletonBeanRegistry，修改为继承 FactoryBeanRegistrySupport。因为需要扩展出创建 FactoryBean 对象的能力，所以这就想一个链条服务上，截出一个段来处理额外的服务，并把链条再链接上。
+  - FactoryBeanRegistrySupport继承自DefaultSingletonBeanRegistry
+- 此处新增加的功能主要是在 doGetBean 方法中，添加了调用 `(T) getObjectForBeanInstance(sharedInstance, name)` 对获取 FactoryBean 的操作。
+- 在 getObjectForBeanInstance 方法中做具体的 instanceof 判断，另外还会从 FactoryBean 的缓存中获取对象，如果不存在则调用 FactoryBeanRegistrySupport#getObjectFromFactoryBean，执行具体的操作。
+
+
+
+## 测试
+
+### 定义 FactoryBean 对象
+
+```java
+public class ProxyBeanFactory implements FactoryBean<IUserDao> {
+
+    
+    //    //使用Lambda表达式实现了invoke()方法。在invoke()方法中，根据传入的方法名和参数，返回一个固定的字符串，该字符串由一个HashMap根据参数值查找得到。
+    //接下来，通过Proxy.newProxyInstance()方法创建了一个代理对象，该代理对象实现了IUserDao接口，并使用之前创建的InvocationHandler作为参数。
+
+    @Override
+    public IUserDao getObject() throws Exception {
+        InvocationHandler handler = (proxy, method, args) -> {
+
+            Map<String, String> hashMap = new HashMap<>();
+            hashMap.put("10001", "小傅哥");
+            hashMap.put("10002", "八杯水");
+            hashMap.put("10003", "阿毛");
+            
+            return "你被代理了 " + method.getName() + "：" + hashMap.get(args[0].toString());
+        };
+        return (IUserDao) Proxy.newProxyInstance(Thread.currentThread().getContextClassLoader(), new Class[]{IUserDao.class}, handler);
+    }
+
+    @Override
+    public Class<?> getObjectType() {
+        return IUserDao.class;
+    }
+
+    @Override
+    public boolean isSingleton() {
+        return true;
+    }
+
+}
+
+```
+
+- 从测试结果来看，我们的代理类 ProxyBeanFactory 已经完美替换掉了 UserDao 的功能。
+- 虽然看上去这一点实现并不复杂，甚至有点简单。但就是这样一点点核心内容的设计了，解决了所有需要和 Spring 结合的其他框架交互链接问题
+
+
+
+### 结果
+
+```java
+Aware ClassLoader:sun.misc.Launcher$AppClassLoader@b4aac2
+Aware Bean name is userService
+执行：UserService.afterPropertiesSet
+Aware ClassLoader:sun.misc.Launcher$AppClassLoader@b4aac2
+Aware Bean name is userService
+执行：UserService.afterPropertiesSet
+Aware ClassLoader:sun.misc.Launcher$AppClassLoader@b4aac2
+Aware Bean name is userService
+执行：UserService.afterPropertiesSet
+com.inet.bean.UserService$$EnhancerByCGLIB$$c647553b@134affc
+com.inet.bean.UserService$$EnhancerByCGLIB$$c647553b@d041cf
+com.inet.bean.UserService$$EnhancerByCGLIB$$c647553b@134affc 十六进制哈希：134affc
+com.inet.bean.UserService$$EnhancerByCGLIB$$c647553b object internals:
+ OFFSET  SIZE                                  TYPE DESCRIPTION                                               VALUE
+      0     4                                       (object header)                                           09 fe 57 9a (00001001 11111110 01010111 10011010) (-1705509367)
+      4     4                                       (object header)                                           a0 3c 12 16 (10100000 00111100 00010010 00010110) (370293920)
+      8     4   com.inet.context.ApplicationContext UserService.applicationContext                            (object)
+     12     4    com.inet.beans.factory.BeanFactory UserService.beanFactory                                   (object)
+     16     4                      java.lang.String UserService.uId                                           (object)
+     20     4                      java.lang.String UserService.company                                       (object)
+     24     4                      java.lang.String UserService.location                                      (object)
+     28     4                com.inet.bean.IUserDao UserService.userDao                                       (object)
+     32     1                               boolean UserService$$EnhancerByCGLIB$$c647553b.CGLIB$BOUND        true
+     33     3                                       (alignment/padding gap)                                  
+     36     4               net.sf.cglib.proxy.NoOp UserService$$EnhancerByCGLIB$$c647553b.CGLIB$CALLBACK_0   (object)
+Instance size: 40 bytes
+Space losses: 3 bytes internal + 0 bytes external = 3 bytes total
+
+```
+
+
+
+
+
+## STAR总结
+
+> 参考：https://wx.zsxq.com/dweb2/index/topic_detail/585551445252444
+
+### situation：
+
+bean对象不仅仅只有单例，可能还会是原型，并且使用者应该可以自己定义并注册复杂或者**动态代理**的Bean对象到Spring中，满足扩展组件开发的需求。
+
+### Task：
+
+- 增加Bean的作用域，不仅仅是单例。
+
+- 实现FactoryBean，使得用户可以自己拓展Bean对象的功能
+
+### Action
+
+bean的作用域：
+
+1. BeanDefinition类中增加作用域相关字段 
+2. 加载解析资源时增加解析作用域参数 
+3.  生成bean时进行判断，若是BeanDefinition标记为单例模式的bean放入单例缓存池中，原型模式的bean则每次重新生成
+
+FactoryBean：
+
+1. 创建 FactoryBean<T>  接口 
+
+   a. 提供给使用者自定义生成bean的方法<精髓>  
+
+   b. 获取bean的class类型的方法  
+
+   c. 判断是否为单例
+
+2. 创建 FactoryBeanRegistrySupport抽象类，继承自 DefaultSingletonBeanRegistry   
+
+   a. 内部持有一个由FactoryBean提供给使用者自定义生成bean构建出的对象的缓存池
+
+   b. 根据beanName获取缓存池中的对象  
+
+   c. 根据factoryBean和beanName获取生成的对象，若是缓存池中没有bean则进行生成，同样会判断是否时单例bean，若是则生成后放入缓存池中
+
+​		d.调用实现FactoryBean构建对象的方法，生成时实则调用本方法
+
+> 这个getObject的具体内容是用户实现，因为用户实现这个接口就是为了拓展Bean功能
+
