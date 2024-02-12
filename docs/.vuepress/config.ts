@@ -46,7 +46,7 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         items: [
           { text: 'Java开发', link: '/java/' },
           { text: 'Go开发', link: '/go/' },
-          { text: '微服务开发', link: '/miniService/' },
+          { text: '微服务开发', link: '/microservice/' },
         ],
       },
       {
