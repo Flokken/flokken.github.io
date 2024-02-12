@@ -45,6 +45,8 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         //link: '/backend/',
         items: [
           { text: 'Java开发', link: '/java/' },
+          { text: 'Go开发', link: '/go/' },
+          { text: '微服务开发', link: '/miniService/' },
         ],
       },
       {
@@ -75,13 +77,14 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
         //link: '/structure_algorithm/',
         items: [
           { text: '算法', link: '/algorithm/' },
+          { text: '数据结构', link: '/datastructure/' },
+
         ],
       },
       {
         text: '其他',
         //link: '/other/',
         items: [
-          { text: '收藏', link: '/pages/8924d1/' },
           { text: '小知识', link: '/tips/' },
         ],
       },
@@ -98,9 +101,9 @@ export default defineConfig4CustomTheme<VdoingThemeConfig>({
 
     //*** 以下是Vdoing主题相关配置，文档：https://doc.xugaoyi.com/pages/a20ce8/ ***//
 
-    // category: false, // 是否打开分类功能，默认true
-    // tag: false, // 是否打开标签功能，默认true
-    // archive: false, // 是否打开归档功能，默认true
+    category: true, // 是否打开分类功能，默认true
+    tag: true, // 是否打开标签功能，默认true
+    archive: true, // 是否打开归档功能，默认true
     // categoryText: '随笔', // 碎片化文章（_posts文件夹的文章）预设生成的分类值，默认'随笔'
 
     // pageStyle: 'line', // 页面风格，可选值：'card'卡片 | 'line' 线（未设置bodyBgImg时才生效）， 默认'card'。 说明：card时背景显示灰色衬托出卡片样式，line时背景显示纯色，并且部分模块带线条边框
