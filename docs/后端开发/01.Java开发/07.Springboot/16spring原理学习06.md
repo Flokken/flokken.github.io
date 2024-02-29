@@ -56,6 +56,23 @@ categories:
   - 应用上下文就是这个应用所需的各种支持环境，比如变量值，位置等等。
 - 同时在实现应用上下文的过程中，通过定义接口：`BeanFactoryPostProcessor`、`BeanPostProcessor` 两个接口，把关于对 Bean 的扩展机制串联进去了。
 
+## 前置知识
+
+#### Bean的实例化和初始化
+
+在Spring框架中，Bean的实例化和初始化是两个不同的阶段。
+
+- 实例化（Instantiation）阶段：
+  - 在实例化阶段，Spring容器根据Bean的定义信息创建Bean的实例。这个过程通常发生在应用程序启动时，或者在第一次请求Bean时。Spring中用jdk和cglib两种方式创建Bean对象实例
+- 初始化（Initialization）阶段：
+  - 在初始化阶段，Spring容器对实例化后的Bean进行一些额外的配置和初始化操作。这些操作可以包括依赖注入、调用初始化方法等。初始化方法可以是Bean类中自定义的方法，也可以是实现了Spring提供的特定接口（例如InitializingBean接口）的方法。
+
+**区别**
+
+- **实例化是创建Bean的实例，而初始化是对实例化后的Bean进行配置和初始化操作**。
+- 实例化是创建对象的过程，而初始化是对对象进行一些额外的操作和配置。
+- Bean对象先实例化，然后才会进行初始化
+
 ## 工程结构
 
 ```java
@@ -160,7 +177,9 @@ public interface BeanPostProcessor {
 
 ```
 
-- 提供了修改新实例化 Bean 对象的扩展点。
+- 提供了修改新实例化 (也就是刚刚实例化)Bean 对象的扩展点。
+  - 就是提供Bean对象实例化之后的对Bean对象进行拓展的方法
+
 - 另外此接口提供了两个方法：`postProcessBeforeInitialization` 用于在 Bean 对象执行初始化方法之前，执行此方法、`postProcessAfterInitialization`用于在 Bean 对象执行初始化方法之后，执行此方法。
 
 ### 定义上下文接口
@@ -171,7 +190,7 @@ public interface ApplicationContext extends ListableBeanFactory {
 ```
 
 - context 是本次实现应用上下文功能新增的服务包
-- ApplicationContext，继承于 ListableBeanFactory，也就继承了关于 BeanFactory 方法，比如一些 getBean 的方法。另外 ApplicationContext 本身是 Central 接口，但目前还不需要添加一些获取ID和父类上下文，所以暂时没有接口方法的定义。
+- ApplicationContext，继承于 ListableBeanFactory，**也就继承了关于 BeanFactory 方法**，比如一些 getBean 的方法。另外 ApplicationContext 本身是 Central 接口，但目前还不需要添加一些获取ID和父类上下文，所以暂时没有接口方法的定义。
 
 ```java
 public interface ConfigurableApplicationContext extends ApplicationContext {
@@ -644,22 +663,23 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
 
 spring源码中的解释:`Central interface to provide configuration for an application`。应用上下文是为应用提供环境/配置的。
 
-这里的代码中，主要体现在这个应用上下文可以通过修改`BeanFactory`的方式，来为BeanFactory提供用户所给的修改。
+这里的代码中，**主要体现在这个应用上下文可以通过修改`BeanFactory`的方式，来为BeanFactory提供用户所给的修改。**
 
  **二、应用上下文在干些什么**
 
- a. 加载XML 
+-  加载XML 
 
-b. 修改BeanDefinition
 
- c. Bean的扩展 
+- 修改BeanDefinition
+- Bean的实例化
 
-d. Bean的实例化
+- Bean对象的扩展 
+
 
  **三、两大类接口** 
 
-- -BeanFactoryPostProcess:如名，在Factory之后的处理器，那就是在BeanDefinition初始化之后。
--  -BeanPostProcessor:如名，在Bean之后的处理器，那就是在Bean初始化之后，但这个接口提供了在Bean初始化前后都有 这一章的操作也基本上环绕着这两个接口需要的操作以及应用上下文在干什么去进行
+- BeanFactoryPostProcess:如名，在BeanFactory之后的处理器，这个接口是满足于**在所有的 BeanDefinition 加载完成后，实例化 Bean 对象之前，提供修改 BeanDefinition 属性的机制。**
+-  BeanPostProcessor:如名，在Bean之后的处理器**，提供Bean对象实例化之后使用的两个方法，分别是初始化之前和初始化之后修改属性的方法**
 
 **四、如何实现**
 
@@ -667,38 +687,79 @@ d. Bean的实例化
 
 BeanFactoryPostProcessor
 
-- 提供postProcessBeanFactory去处理postProcessBeanFactory 
+- 提供postProcessBeanFactory去处理**Bean实例化之前的属性修改**
 
 BeanPostProcessor
 
--  提供postProcessBeforeInitialization以及postProcessAfterInitialization方法，去处理Bean实例化前后的处理。
+-  提供postProcessBeforeInitialization以及postProcessAfterInitialization方法，去处理**Bean初始化前后对Bean的处理。**
 
 2.应用上下文处理
 
- ApplicationContext：应用上下文接口，继承了一个ListableBeanFactory，也就继承了一些BeanFactory的方法，包括getBean等。 -ConfigurableApplicationContext：继承ApplicationContext接口，内置refresh，这是一个核心方法，用来刷新容器。
+ ApplicationContext：应用上下文接口，继承了一个ListableBeanFactory，也就继承了一些BeanFactory的方法，包括getBean等。 -ConfigurableApplicationContext：继承ApplicationContext接口，**内置refresh，这是一个核心方法，用来刷新容器**。
 
 > 刷新容器，顾名思义，就是对容器中的bean对象进行改变、刷新 **因为拓展Bean就是用户对Bean有了修改，所以刷新就是应用这些修改**
 
 AbstractApplicationContext：这里应用了模板模式，实现类`refresh()`的流程，其实也就是上下文干了什么。
 
-- a. 创建BeanFactory，加载注册BeanDefinition 
-- b. 获取BeanFactory
--  c. 执行BeanFactoryPostProcessor
--  d.注册、 把Bean中载入的BeanPostProcessor加载进BeanFactory，在createBean的时候再去调用
--  e. 直接调用方法，创建Bean对象 
+- 创建BeanFactory，加载注册BeanDefinition 
 
-它像是对BeanFatory的包装，它里面藏了一个新建的BeanFactory，并对他进行读取XML、加载/修改BeanDefinition、扩展Bean对象、Bean的实例化。并对外提供Bean的获取方法，那么以后对bean的管理就完全可以通过Context来进行。 
+- 获取BeanFactory
+
+- 执行BeanFactoryPostProcessor
+
+  - Bean对象实例化之前执行这个处理
+
+- 注册、 把Bean中载入的BeanPostProcessor加载进BeanFactory，在createBean的时候再去调用
+
+  - BeanFactory持有`beanPostProcessors`集合，这里的`BeanPostProcessor`的处理就是先放到这个集合里
+  - **注意，这里只是把这些内容注册到这个集合（注册就是put到这个集合里），实际上还是等到`createBean`时才会去读取这个集合，进行实际的处理**
+
+- 直接调用方法，创建Bean对象 
+
+  - 实际创建时，先实例话Bean对象，然后在初始化时，在传入`beanPostProcessors`中的修改
+
+  - ```java
+     @Override
+        protected Object createBean(String beanName, BeanDefinition beanDefinition,Object[] args) throws BeansException{
+            Object bean=null;
+            try{
+                bean = createBeanInstance(beanDefinition,beanName,args);
+                //给Bean填充属性
+                applyPropertyValues(beanName, bean, beanDefinition);
+                //执行Bean的初始化方法和BeanPostProcessor的前置和后置处理方法
+                bean = initializeBean(beanName,bean,beanDefinition);
+    
+            }catch (Exception e){
+                throw new BeansException("Instantiation of bean failed", e);
+    
+            }
+    //      .................
+        }
+     private Object initializeBean(String beanName,Object bean,BeanDefinition beanDefinition){
+            // 1. 执行 BeanPostProcessor Before 处理
+            Object wrappedBean = applyBeanPostProcessorsBeforeInitialization(bean, beanName);
+    //..................
+            // 2. 执行 BeanPostProcessor After 处理
+            wrappedBean = applyBeanPostProcessorsAfterInitialization(wrappedBean, beanName);
+            return wrappedBean;
+        }
+    ```
+
+
+`AbstractApplicationContext`像是对BeanFatory的更进一层的包装，它里面藏了一个新建的BeanFactory并且新增了一些操作，可以进行读取XML、加载/修改BeanDefinition、扩展Bean对象、Bean的实例化。并对外提供Bean的获取方法，**那么以后对bean的管理就完全可以通过Context来进行（所以后面的spring功能是基于Context来逐步添加的）**。 
 
 并且这个模板模式就需要把抽象方法让下面的子类一个个完成了，这里用了多次继承，**就是想让一个抽象类完成一类方法，让类的职责更加清晰：**
 
-- AbstractRefreshableApplicationContext-它来进行DefaultListableBeanFactory的创建
+- AbstractRefreshableApplicationContext：它来进行DefaultListableBeanFactory的创建
+  - `DefaultListableBeanFactory`持有`beanDefinitionMap`，**也就是BeanDefinition的集合**
+
 - AbstractXmlApplicationContext-他来调用xmlBeanDefinitionReader进行BeanFactory的xml资源加载，ApplicationContex是继承了DefaultResourceLoader的，所以可以解析资源。 
 - ClassPathXmlApplicationContext，这里是最终向外提供的接口，用来让应用中提供配置文件具体在哪，并返回用户上下文。
 
- 最后，回到AbstractAutowireCapableBeanFactory，它是专门负责创建bean的抽象类，在createBean的时候要来调用我们的BeanPostProcessor，遍历调用所有BeanPostProcessor，并分别执行before和after方法。 
+ 最后，回到AbstractAutowireCapableBeanFactory，**它是专门负责创建bean的抽象类**，在createBean的时候要来调用我们的BeanPostProcessor，遍历调用所有BeanPostProcessor，并分别执行before和after方法。 
 
 - 这里注意，`BeanPostProcessor`放在了AbstractBeanFactory中，`private final List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();`,并且提供add,remove等方法
-- 这里我们需要知道，BeanPostProcessor和BeanFactoryPostProcessor也是BeanFactory可以管理的类，**只不过他们的实现类是用户实现**，当用户实现后，可以注册BeanDefinition去取得已经初始化好的bean实例。
+- 这里注意，BeanPostProcessor和BeanFactoryPostProcessor也是BeanFactory可以管理的类，**只不过他们的实现类是用户实现，当用户实现后，可以注册BeanDefinition去取得已经初始化好的bean实例。**
 - 如下所示，我们加载配置文件之后，读取了这两个节点实现类的BeanDefinition，并且实例化为了单例Bean对象
   - ![image-20240116102519864](https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20240116102519864.png)
 
@@ -707,5 +768,3 @@ AbstractApplicationContext：这里应用了模板模式，实现类`refresh()`�
 这节主要就是应用上下文在容器内部是怎么实现的，通过包装BeanFactory使得其可以加载xml，并且处理Bean的拓展以及实例化。
 
 虽然笔记很多，但是不一定再有时间看，所以总结和流程图很重要！还有就是借鉴别人总结的知识也很重要，不要故步自封。
-
-这也是第一次看到STAR法则，内容也是搬砖别人的，之后尽量自己也要能写出来。
