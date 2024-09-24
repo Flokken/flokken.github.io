@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>C++的一些语法 | flokken&#39;s blog</title>
+    <meta name="generator" content="VuePress 1.9.5">
+    <link rel="icon" href="/img/favicon.ico">
+    <meta name="description" content="记录学过的东西">
+    <meta name="keywords" content="JavaScript,js,ES6,TypeScript,vue,python,css3,html5,Node,git,github,markdown">
+    <meta name="baidu-site-verification" content="7F55weZDDc">
+    <meta name="theme-color" content="#11a8cd">
+    
+    <link rel="preload" href="/assets/css/0.styles.bc84ce4b.css" as="style"><link rel="preload" href="/assets/js/app.6c1ebbcf.js" as="script"><link rel="preload" href="/assets/js/2.28dcc766.js" as="script"><link rel="preload" href="/assets/js/234.c51411ea.js" as="script"><link rel="prefetch" href="/assets/js/10.dadef33a.js"><link rel="prefetch" href="/assets/js/100.c21337b1.js"><link rel="prefetch" href="/assets/js/101.eeb225e5.js"><link rel="prefetch" href="/assets/js/102.442361dc.js"><link rel="prefetch" href="/assets/js/103.8495a4a1.js"><link rel="prefetch" href="/assets/js/104.be5e7531.js"><link rel="prefetch" href="/assets/js/105.f968e108.js"><link rel="prefetch" href="/assets/js/106.9c7bcb9d.js"><link rel="prefetch" href="/assets/js/107.5418bfc1.js"><link rel="prefetch" href="/assets/js/108.21c8e4b5.js"><link rel="prefetch" href="/assets/js/109.443388e7.js"><link rel="prefetch" href="/assets/js/11.cb3946f4.js"><link rel="prefetch" href="/assets/js/110.aee2ce54.js"><link rel="prefetch" href="/assets/js/111.c1c4c853.js"><link rel="prefetch" href="/assets/js/112.a77d44c2.js"><link rel="prefetch" href="/assets/js/113.3e1c1563.js"><link rel="prefetch" href="/assets/js/114.b73e18ed.js"><link rel="prefetch" href="/assets/js/115.464712f7.js"><link rel="prefetch" href="/assets/js/116.515a3426.js"><link rel="prefetch" href="/assets/js/117.1de6d86e.js"><link rel="prefetch" href="/assets/js/118.c87898a4.js"><link rel="prefetch" href="/assets/js/119.4d47ac77.js"><link rel="prefetch" href="/assets/js/12.3d11ba1b.js"><link rel="prefetch" href="/assets/js/120.adc822aa.js"><link rel="prefetch" href="/assets/js/121.dea1a90f.js"><link rel="prefetch" href="/assets/js/122.1490ee10.js"><link rel="prefetch" href="/assets/js/123.08cfb23f.js"><link rel="prefetch" href="/assets/js/124.28d0e817.js"><link rel="prefetch" href="/assets/js/125.a7630423.js"><link rel="prefetch" href="/assets/js/126.0d5b60c3.js"><link rel="prefetch" href="/assets/js/127.250521db.js"><link rel="prefetch" href="/assets/js/128.508639a2.js"><link rel="prefetch" href="/assets/js/129.5e6579a1.js"><link rel="prefetch" href="/assets/js/13.74ebc418.js"><link rel="prefetch" href="/assets/js/130.1c66619f.js"><link rel="prefetch" href="/assets/js/131.e83e8060.js"><link rel="prefetch" href="/assets/js/132.7ff3654e.js"><link rel="prefetch" href="/assets/js/133.4125eaa7.js"><link rel="prefetch" href="/assets/js/134.4a100ce2.js"><link rel="prefetch" href="/assets/js/135.789a6a26.js"><link rel="prefetch" href="/assets/js/136.9cc03ec3.js"><link rel="prefetch" href="/assets/js/137.8bd376fe.js"><link rel="prefetch" href="/assets/js/138.532d50a9.js"><link rel="prefetch" href="/assets/js/139.53372ba6.js"><link rel="prefetch" href="/assets/js/14.eaf82e4f.js"><link rel="prefetch" href="/assets/js/140.88405785.js"><link rel="prefetch" href="/assets/js/141.38d215a9.js"><link rel="prefetch" href="/assets/js/142.e0163f88.js"><link rel="prefetch" href="/assets/js/143.b523e1ce.js"><link rel="prefetch" href="/assets/js/144.10873c46.js"><link rel="prefetch" href="/assets/js/145.dfe09936.js"><link rel="prefetch" href="/assets/js/146.b05dc164.js"><link rel="prefetch" href="/assets/js/147.c5b7f960.js"><link rel="prefetch" href="/assets/js/148.80f47df1.js"><link rel="prefetch" href="/assets/js/149.b8d840e3.js"><link rel="prefetch" href="/assets/js/15.e64aec1b.js"><link rel="prefetch" href="/assets/js/150.d4361634.js"><link rel="prefetch" href="/assets/js/151.d8431db2.js"><link rel="prefetch" href="/assets/js/152.47852d30.js"><link rel="prefetch" href="/assets/js/153.47ea2a94.js"><link rel="prefetch" href="/assets/js/154.97384b42.js"><link rel="prefetch" href="/assets/js/155.3026447d.js"><link rel="prefetch" href="/assets/js/156.68e37577.js"><link rel="prefetch" href="/assets/js/157.086f0b3f.js"><link rel="prefetch" href="/assets/js/158.bdcb5b98.js"><link rel="prefetch" href="/assets/js/159.f52cb015.js"><link rel="prefetch" href="/assets/js/16.e312a677.js"><link rel="prefetch" href="/assets/js/160.a2739d99.js"><link rel="prefetch" href="/assets/js/161.7212e5c4.js"><link rel="prefetch" href="/assets/js/162.8006dc05.js"><link rel="prefetch" href="/assets/js/163.bf42549e.js"><link rel="prefetch" href="/assets/js/164.5b2eea28.js"><link rel="prefetch" href="/assets/js/165.d531f59f.js"><link rel="prefetch" href="/assets/js/166.86bf0046.js"><link rel="prefetch" href="/assets/js/167.af7a49eb.js"><link rel="prefetch" href="/assets/js/168.362435ae.js"><link rel="prefetch" href="/assets/js/169.b71a8d5d.js"><link rel="prefetch" href="/assets/js/17.e9813cce.js"><link rel="prefetch" href="/assets/js/170.975564fa.js"><link rel="prefetch" href="/assets/js/171.4949b39a.js"><link rel="prefetch" href="/assets/js/172.8d7529ad.js"><link rel="prefetch" href="/assets/js/173.404d8588.js"><link rel="prefetch" href="/assets/js/174.6641d1c4.js"><link rel="prefetch" href="/assets/js/175.0f46859d.js"><link rel="prefetch" href="/assets/js/176.2fd697ec.js"><link rel="prefetch" href="/assets/js/177.0f744d20.js"><link rel="prefetch" href="/assets/js/178.021de7d2.js"><link rel="prefetch" href="/assets/js/179.593f9493.js"><link rel="prefetch" href="/assets/js/18.0bfadb6c.js"><link rel="prefetch" href="/assets/js/180.8305cce0.js"><link rel="prefetch" href="/assets/js/181.5e83f1b6.js"><link rel="prefetch" href="/assets/js/182.87985f96.js"><link rel="prefetch" href="/assets/js/183.80ba1b3c.js"><link rel="prefetch" href="/assets/js/184.f11d0532.js"><link rel="prefetch" href="/assets/js/185.c859c104.js"><link rel="prefetch" href="/assets/js/186.dc782260.js"><link rel="prefetch" href="/assets/js/187.bc43a42b.js"><link rel="prefetch" href="/assets/js/188.abf4a947.js"><link rel="prefetch" href="/assets/js/189.3911f624.js"><link rel="prefetch" href="/assets/js/19.ebbfaca6.js"><link rel="prefetch" href="/assets/js/190.6ba0f02e.js"><link rel="prefetch" href="/assets/js/191.612eaebf.js"><link rel="prefetch" href="/assets/js/192.7545f46e.js"><link rel="prefetch" href="/assets/js/193.8c879c3b.js"><link rel="prefetch" href="/assets/js/194.2ac85355.js"><link rel="prefetch" href="/assets/js/195.887d8d44.js"><link rel="prefetch" href="/assets/js/196.82fc2486.js"><link rel="prefetch" href="/assets/js/197.f3d5a63f.js"><link rel="prefetch" href="/assets/js/198.acb21d94.js"><link rel="prefetch" href="/assets/js/199.72a831c8.js"><link rel="prefetch" href="/assets/js/20.7946efec.js"><link rel="prefetch" href="/assets/js/200.d22fdf55.js"><link rel="prefetch" href="/assets/js/201.d9df6873.js"><link rel="prefetch" href="/assets/js/202.001109bc.js"><link rel="prefetch" href="/assets/js/203.ba860144.js"><link rel="prefetch" href="/assets/js/204.0bb6f98e.js"><link rel="prefetch" href="/assets/js/205.d9c979cd.js"><link rel="prefetch" href="/assets/js/206.1d24147d.js"><link rel="prefetch" href="/assets/js/207.f3d10dab.js"><link rel="prefetch" href="/assets/js/208.c3ba92f2.js"><link rel="prefetch" href="/assets/js/209.fe7a19e2.js"><link rel="prefetch" href="/assets/js/21.0b137891.js"><link rel="prefetch" href="/assets/js/210.5d424205.js"><link rel="prefetch" href="/assets/js/211.d84d326b.js"><link rel="prefetch" href="/assets/js/212.1d38af17.js"><link rel="prefetch" href="/assets/js/213.061f3dbf.js"><link rel="prefetch" href="/assets/js/214.ecb8325b.js"><link rel="prefetch" href="/assets/js/215.615caf62.js"><link rel="prefetch" href="/assets/js/216.e23dc266.js"><link rel="prefetch" href="/assets/js/217.9933d9c4.js"><link rel="prefetch" href="/assets/js/218.5cdf2ac4.js"><link rel="prefetch" href="/assets/js/219.72e58688.js"><link rel="prefetch" href="/assets/js/22.3762b636.js"><link rel="prefetch" href="/assets/js/220.fbc6f972.js"><link rel="prefetch" href="/assets/js/221.1c8eeced.js"><link rel="prefetch" href="/assets/js/222.163dee0a.js"><link rel="prefetch" href="/assets/js/223.72e37b20.js"><link rel="prefetch" href="/assets/js/224.e09609e5.js"><link rel="prefetch" href="/assets/js/225.34fd5c90.js"><link rel="prefetch" href="/assets/js/226.9991814a.js"><link rel="prefetch" href="/assets/js/227.1e2b8a98.js"><link rel="prefetch" href="/assets/js/228.1d4d1fcf.js"><link rel="prefetch" href="/assets/js/229.cc91769e.js"><link rel="prefetch" href="/assets/js/23.f7ebea5b.js"><link rel="prefetch" href="/assets/js/230.3d3edd0f.js"><link rel="prefetch" href="/assets/js/231.0475038b.js"><link rel="prefetch" href="/assets/js/232.a9e3d0d3.js"><link rel="prefetch" href="/assets/js/233.2ca519d3.js"><link rel="prefetch" href="/assets/js/235.35616a91.js"><link rel="prefetch" href="/assets/js/236.db361c9c.js"><link rel="prefetch" href="/assets/js/237.c8e14a33.js"><link rel="prefetch" href="/assets/js/238.0f2fcf3a.js"><link rel="prefetch" href="/assets/js/239.a33a3324.js"><link rel="prefetch" href="/assets/js/24.42946d79.js"><link rel="prefetch" href="/assets/js/240.7bf17817.js"><link rel="prefetch" href="/assets/js/241.613e82c4.js"><link rel="prefetch" href="/assets/js/242.5709b7c9.js"><link rel="prefetch" href="/assets/js/243.4f2501de.js"><link rel="prefetch" href="/assets/js/244.63720e3b.js"><link rel="prefetch" href="/assets/js/245.e756153f.js"><link rel="prefetch" href="/assets/js/246.b709da2f.js"><link rel="prefetch" href="/assets/js/247.e6f5dc6f.js"><link rel="prefetch" href="/assets/js/248.79fff09e.js"><link rel="prefetch" href="/assets/js/249.2c7ad7a2.js"><link rel="prefetch" href="/assets/js/25.a86a3678.js"><link rel="prefetch" href="/assets/js/250.29112339.js"><link rel="prefetch" href="/assets/js/251.634c259b.js"><link rel="prefetch" href="/assets/js/252.f020ace1.js"><link rel="prefetch" href="/assets/js/253.21843ce0.js"><link rel="prefetch" href="/assets/js/254.819b0d0b.js"><link rel="prefetch" href="/assets/js/255.a1a36af5.js"><link rel="prefetch" href="/assets/js/256.b331fde3.js"><link rel="prefetch" href="/assets/js/257.d496873b.js"><link rel="prefetch" href="/assets/js/258.d25fd3f2.js"><link rel="prefetch" href="/assets/js/259.e26ffb21.js"><link rel="prefetch" href="/assets/js/26.5fe90cb9.js"><link rel="prefetch" href="/assets/js/260.173d7a1c.js"><link rel="prefetch" href="/assets/js/261.fd2846ac.js"><link rel="prefetch" href="/assets/js/262.110b431f.js"><link rel="prefetch" href="/assets/js/263.deab1489.js"><link rel="prefetch" href="/assets/js/264.b38ed189.js"><link rel="prefetch" href="/assets/js/265.e50c8ee7.js"><link rel="prefetch" href="/assets/js/266.132d2f80.js"><link rel="prefetch" href="/assets/js/267.df5c367d.js"><link rel="prefetch" href="/assets/js/268.94eee0dd.js"><link rel="prefetch" href="/assets/js/269.27287f29.js"><link rel="prefetch" href="/assets/js/27.0ac244ef.js"><link rel="prefetch" href="/assets/js/270.82414c58.js"><link rel="prefetch" href="/assets/js/271.88d41d2f.js"><link rel="prefetch" href="/assets/js/272.fdea98e3.js"><link rel="prefetch" href="/assets/js/273.291d7bce.js"><link rel="prefetch" href="/assets/js/274.6470bef1.js"><link rel="prefetch" href="/assets/js/275.ae5aaecb.js"><link rel="prefetch" href="/assets/js/276.6249c409.js"><link rel="prefetch" href="/assets/js/277.c281acfe.js"><link rel="prefetch" href="/assets/js/278.4bf4de94.js"><link rel="prefetch" href="/assets/js/279.62240a5f.js"><link rel="prefetch" href="/assets/js/28.7b66a9da.js"><link rel="prefetch" href="/assets/js/280.a05c4459.js"><link rel="prefetch" href="/assets/js/281.f5dbccd2.js"><link rel="prefetch" href="/assets/js/282.3c8929fa.js"><link rel="prefetch" href="/assets/js/283.8632920a.js"><link rel="prefetch" href="/assets/js/284.74b2e3cc.js"><link rel="prefetch" href="/assets/js/285.1c3bb787.js"><link rel="prefetch" href="/assets/js/286.145be126.js"><link rel="prefetch" href="/assets/js/287.0a623eba.js"><link rel="prefetch" href="/assets/js/288.e07989da.js"><link rel="prefetch" href="/assets/js/289.2f5fdfd9.js"><link rel="prefetch" href="/assets/js/29.ebd9ba6b.js"><link rel="prefetch" href="/assets/js/290.0b12e49c.js"><link rel="prefetch" href="/assets/js/291.fc65a93a.js"><link rel="prefetch" href="/assets/js/292.2beb238d.js"><link rel="prefetch" href="/assets/js/293.87c822f4.js"><link rel="prefetch" href="/assets/js/294.450b6510.js"><link rel="prefetch" href="/assets/js/295.9191ddf7.js"><link rel="prefetch" href="/assets/js/296.92ec965c.js"><link rel="prefetch" href="/assets/js/297.68c01079.js"><link rel="prefetch" href="/assets/js/298.768b54ab.js"><link rel="prefetch" href="/assets/js/299.c2b57741.js"><link rel="prefetch" href="/assets/js/3.cd795b12.js"><link rel="prefetch" href="/assets/js/30.05a622e0.js"><link rel="prefetch" href="/assets/js/300.f409e502.js"><link rel="prefetch" href="/assets/js/301.56e89c78.js"><link rel="prefetch" href="/assets/js/302.942b0d94.js"><link rel="prefetch" href="/assets/js/303.d3946671.js"><link rel="prefetch" href="/assets/js/304.a346c8aa.js"><link rel="prefetch" href="/assets/js/305.46fa308b.js"><link rel="prefetch" href="/assets/js/306.c7f27ad8.js"><link rel="prefetch" href="/assets/js/307.0c8cf8c0.js"><link rel="prefetch" href="/assets/js/308.1d2db23d.js"><link rel="prefetch" href="/assets/js/309.2055654b.js"><link rel="prefetch" href="/assets/js/31.cc1bdb96.js"><link rel="prefetch" href="/assets/js/310.b6b7887a.js"><link rel="prefetch" href="/assets/js/311.e605ceab.js"><link rel="prefetch" href="/assets/js/312.52192bb7.js"><link rel="prefetch" href="/assets/js/313.2698bd8e.js"><link rel="prefetch" href="/assets/js/314.5d9073d0.js"><link rel="prefetch" href="/assets/js/315.c409cde3.js"><link rel="prefetch" href="/assets/js/316.2bf0e6df.js"><link rel="prefetch" href="/assets/js/317.5798e7df.js"><link rel="prefetch" href="/assets/js/318.95986f30.js"><link rel="prefetch" href="/assets/js/319.e6def8d6.js"><link rel="prefetch" href="/assets/js/32.ef0d5dba.js"><link rel="prefetch" href="/assets/js/320.8b3e8e94.js"><link rel="prefetch" href="/assets/js/321.f936d520.js"><link rel="prefetch" href="/assets/js/322.cdb3332c.js"><link rel="prefetch" href="/assets/js/323.4e193830.js"><link rel="prefetch" href="/assets/js/324.5da1850e.js"><link rel="prefetch" href="/assets/js/325.ff5ccde4.js"><link rel="prefetch" href="/assets/js/326.160651b1.js"><link rel="prefetch" href="/assets/js/327.db3feae7.js"><link rel="prefetch" href="/assets/js/328.4ebf4ae0.js"><link rel="prefetch" href="/assets/js/329.f71c3883.js"><link rel="prefetch" href="/assets/js/33.3c571bbe.js"><link rel="prefetch" href="/assets/js/330.885ae61c.js"><link rel="prefetch" href="/assets/js/331.b1a938ba.js"><link rel="prefetch" href="/assets/js/332.b142c42b.js"><link rel="prefetch" href="/assets/js/333.b8076f78.js"><link rel="prefetch" href="/assets/js/334.ad22ab75.js"><link rel="prefetch" href="/assets/js/335.88564fd2.js"><link rel="prefetch" href="/assets/js/336.39134b8d.js"><link rel="prefetch" href="/assets/js/337.df1ebc2c.js"><link rel="prefetch" href="/assets/js/34.270daa56.js"><link rel="prefetch" href="/assets/js/35.15d989c9.js"><link rel="prefetch" href="/assets/js/36.2e8aeb80.js"><link rel="prefetch" href="/assets/js/37.7b762275.js"><link rel="prefetch" href="/assets/js/38.22ec6ac7.js"><link rel="prefetch" href="/assets/js/39.bdb3430a.js"><link rel="prefetch" href="/assets/js/4.f7fa33d6.js"><link rel="prefetch" href="/assets/js/40.345f3c53.js"><link rel="prefetch" href="/assets/js/41.e93aab58.js"><link rel="prefetch" href="/assets/js/42.e7446174.js"><link rel="prefetch" href="/assets/js/43.3bbfdb12.js"><link rel="prefetch" href="/assets/js/44.4291d737.js"><link rel="prefetch" href="/assets/js/45.82f2cc4f.js"><link rel="prefetch" href="/assets/js/46.342f85bd.js"><link rel="prefetch" href="/assets/js/47.f2f6fe03.js"><link rel="prefetch" href="/assets/js/48.99fd0146.js"><link rel="prefetch" href="/assets/js/49.2634fd40.js"><link rel="prefetch" href="/assets/js/5.ae42b7a0.js"><link rel="prefetch" href="/assets/js/50.691080e8.js"><link rel="prefetch" href="/assets/js/51.292e4b2b.js"><link rel="prefetch" href="/assets/js/52.30b4a61b.js"><link rel="prefetch" href="/assets/js/53.2c6237df.js"><link rel="prefetch" href="/assets/js/54.49456bfa.js"><link rel="prefetch" href="/assets/js/55.4710856c.js"><link rel="prefetch" href="/assets/js/56.0334fc17.js"><link rel="prefetch" href="/assets/js/57.4f70d0ed.js"><link rel="prefetch" href="/assets/js/58.d9a970bf.js"><link rel="prefetch" href="/assets/js/59.7a4b31fd.js"><link rel="prefetch" href="/assets/js/6.d5889eef.js"><link rel="prefetch" href="/assets/js/60.417e05df.js"><link rel="prefetch" href="/assets/js/61.c7980332.js"><link rel="prefetch" href="/assets/js/62.58f3c155.js"><link rel="prefetch" href="/assets/js/63.7229815d.js"><link rel="prefetch" href="/assets/js/64.0d72da6d.js"><link rel="prefetch" href="/assets/js/65.2c623405.js"><link rel="prefetch" href="/assets/js/66.d170f5ad.js"><link rel="prefetch" href="/assets/js/67.01023aac.js"><link rel="prefetch" href="/assets/js/68.018604c5.js"><link rel="prefetch" href="/assets/js/69.abbe4df3.js"><link rel="prefetch" href="/assets/js/7.bf0f2b67.js"><link rel="prefetch" href="/assets/js/70.962b3ba0.js"><link rel="prefetch" href="/assets/js/71.a5606282.js"><link rel="prefetch" href="/assets/js/72.975041a5.js"><link rel="prefetch" href="/assets/js/73.d93206af.js"><link rel="prefetch" href="/assets/js/74.67fe0aca.js"><link rel="prefetch" href="/assets/js/75.a321d6fc.js"><link rel="prefetch" href="/assets/js/76.2a44bacd.js"><link rel="prefetch" href="/assets/js/77.90387be7.js"><link rel="prefetch" href="/assets/js/78.c6455938.js"><link rel="prefetch" href="/assets/js/79.8c3687c2.js"><link rel="prefetch" href="/assets/js/8.0b70db32.js"><link rel="prefetch" href="/assets/js/80.ed6a6259.js"><link rel="prefetch" href="/assets/js/81.9cc4a70c.js"><link rel="prefetch" href="/assets/js/82.4dfd22c3.js"><link rel="prefetch" href="/assets/js/83.bbe5ca26.js"><link rel="prefetch" href="/assets/js/84.0141f56f.js"><link rel="prefetch" href="/assets/js/85.26069038.js"><link rel="prefetch" href="/assets/js/86.c22416bd.js"><link rel="prefetch" href="/assets/js/87.ad2b839e.js"><link rel="prefetch" href="/assets/js/88.de3f91d8.js"><link rel="prefetch" href="/assets/js/89.abb8ff44.js"><link rel="prefetch" href="/assets/js/9.5282ef41.js"><link rel="prefetch" href="/assets/js/90.8dab802c.js"><link rel="prefetch" href="/assets/js/91.67430952.js"><link rel="prefetch" href="/assets/js/92.c95aaeec.js"><link rel="prefetch" href="/assets/js/93.d68e1554.js"><link rel="prefetch" href="/assets/js/94.f9fd1744.js"><link rel="prefetch" href="/assets/js/95.a4fd9b78.js"><link rel="prefetch" href="/assets/js/96.32d95188.js"><link rel="prefetch" href="/assets/js/97.3bf42546.js"><link rel="prefetch" href="/assets/js/98.a032b733.js"><link rel="prefetch" href="/assets/js/99.fc7abb0d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.bc84ce4b.css">
+  </head>
+  <body class="theme-mode-light">
+    <div id="app" data-server-rendered="true"><div class="theme-container sidebar-open have-rightmenu have-body-img"><header class="navbar blur"><div title="目录" class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/logo.png" alt="flokken's blog" class="logo"> <span class="site-name can-hide">flokken's blog</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>web开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/javascript/" class="nav-link">JavaScript</a></li><li class="dropdown-subitem"><a href="/vue/" class="nav-link">Vue</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端开发" class="dropdown-title"><!----> <span class="title" style="display:;">后端开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/" class="nav-link">Java开发</a></li><li class="dropdown-item"><!----> <a href="/go/" class="nav-link">Go开发</a></li><li class="dropdown-item"><!----> <a href="/microservice/" class="nav-link">微服务开发</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="AI" class="dropdown-title"><!----> <span class="title" style="display:;">AI</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/KG/" class="nav-link">知识图谱</a></li><li class="dropdown-item"><!----> <a href="/DL/" class="nav-link">深度学习</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="安全与运维" class="dropdown-title"><!----> <span class="title" style="display:;">安全与运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/reverse/" class="nav-link">逆向</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/spark/" class="nav-link">Spark</a></li><li class="dropdown-item"><!----> <a href="/spider/" class="nav-link">Spider</a></li><li class="dropdown-item"><!----> <a href="/mysql/" class="nav-link">MySQL</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><!----> <span class="title" style="display:;">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/algorithm/" class="nav-link">算法</a></li><li class="dropdown-item"><!----> <a href="/datastructure/" class="nav-link">数据结构</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><!----> <span class="title" style="display:;">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/tips/" class="nav-link">小知识</a></li></ul></div></div> <a href="https://github.com/flokken" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar-hover-trigger"></div> <aside class="sidebar" style="display:none;"><div class="blogger"><img src="https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/avtar.png"> <div class="blogger-info"><h3>flokken</h3> <span>一个大水货</span></div></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">首页</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="前端" class="dropdown-title"><!----> <span class="title" style="display:;">前端</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><h4>web开发</h4> <ul class="dropdown-subitem-wrapper"><li class="dropdown-subitem"><a href="/javascript/" class="nav-link">JavaScript</a></li><li class="dropdown-subitem"><a href="/vue/" class="nav-link">Vue</a></li></ul></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="后端开发" class="dropdown-title"><!----> <span class="title" style="display:;">后端开发</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/java/" class="nav-link">Java开发</a></li><li class="dropdown-item"><!----> <a href="/go/" class="nav-link">Go开发</a></li><li class="dropdown-item"><!----> <a href="/microservice/" class="nav-link">微服务开发</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="AI" class="dropdown-title"><!----> <span class="title" style="display:;">AI</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/KG/" class="nav-link">知识图谱</a></li><li class="dropdown-item"><!----> <a href="/DL/" class="nav-link">深度学习</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="安全与运维" class="dropdown-title"><!----> <span class="title" style="display:;">安全与运维</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/reverse/" class="nav-link">逆向</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="大数据" class="dropdown-title"><!----> <span class="title" style="display:;">大数据</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/spark/" class="nav-link">Spark</a></li><li class="dropdown-item"><!----> <a href="/spider/" class="nav-link">Spider</a></li><li class="dropdown-item"><!----> <a href="/mysql/" class="nav-link">MySQL</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="算法与数据结构" class="dropdown-title"><!----> <span class="title" style="display:;">算法与数据结构</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/algorithm/" class="nav-link">算法</a></li><li class="dropdown-item"><!----> <a href="/datastructure/" class="nav-link">数据结构</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="其他" class="dropdown-title"><!----> <span class="title" style="display:;">其他</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/tips/" class="nav-link">小知识</a></li></ul></div></div> <a href="https://github.com/flokken" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Spark</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Spider</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>数据库</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>MySQL</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading"><span>Redis</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable is-sub-group depth-1"><p class="sidebar-heading open"><span>CMU15445</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/517ee5/" aria-current="page" class="active sidebar-link">C++的一些语法</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#内存分区模型" class="sidebar-link">内存分区模型</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#程序运行前" class="sidebar-link">程序运行前</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#程序运行后" class="sidebar-link">程序运行后</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#new与delete操作符" class="sidebar-link">new与delete操作符</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#引用" class="sidebar-link">引用</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#函数" class="sidebar-link">函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#默认参数" class="sidebar-link">默认参数</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#占位参数" class="sidebar-link">占位参数</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#重载" class="sidebar-link">重载</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#面对对象设计" class="sidebar-link">面对对象设计</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#封装" class="sidebar-link">封装</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#类" class="sidebar-link">类</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#struct和class的区别" class="sidebar-link">Struct和class的区别</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#构造函数与析构函数" class="sidebar-link">构造函数与析构函数</a></li><li class="sidebar-sub-header level5"><a href="/pages/517ee5/#深拷贝和浅拷贝" class="sidebar-link">深拷贝和浅拷贝</a></li><li class="sidebar-sub-header level5"><a href="/pages/517ee5/#初始化列表" class="sidebar-link">初始化列表</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#静态成员" class="sidebar-link">静态成员</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#this指针" class="sidebar-link">this指针</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#多态" class="sidebar-link">多态</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#虚函数与抽象类" class="sidebar-link">虚函数与抽象类</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#虚析构和纯虚析构" class="sidebar-link">虚析构和纯虚析构</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#模板" class="sidebar-link">模板</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#函数模板" class="sidebar-link">函数模板</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#局限" class="sidebar-link">局限</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#类模板" class="sidebar-link">类模板</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#类模板与函数模板区别" class="sidebar-link">类模板与函数模板区别</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#智能指针" class="sidebar-link">智能指针</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#shared-ptr" class="sidebar-link">shared_ptr</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#初始化" class="sidebar-link">初始化</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#常用方法" class="sidebar-link">常用方法</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#删除器" class="sidebar-link">删除器</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#unique-ptr" class="sidebar-link">unique_ptr</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#move-将指针所有权转移" class="sidebar-link">Move:将指针所有权转移</a></li><li class="sidebar-sub-header level4"><a href="/pages/517ee5/#删除器-2" class="sidebar-link">删除器</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#std-optinal" class="sidebar-link">std::optinal</a></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#std-move" class="sidebar-link">std::move</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#左值和右值" class="sidebar-link">左值和右值</a></li><li class="sidebar-sub-header level3"><a href="/pages/517ee5/#std-move函数怎么用" class="sidebar-link">std::move函数怎么用</a></li></ul></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#四种cast转换" class="sidebar-link">四种cast转换</a></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#size-t" class="sidebar-link">size_t</a></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#std-promise" class="sidebar-link">std::promise</a></li><li class="sidebar-sub-header level2"><a href="/pages/517ee5/#std-future" class="sidebar-link">std::future</a></li></ul></li><li><a href="/pages/1aa22a/" class="sidebar-link">vscode环境配置</a></li><li><a href="/pages/5a99bd/" class="sidebar-link">L1-L2关系模型</a></li><li><a href="/pages/a19adc/" class="sidebar-link">L3-存储引擎I</a></li><li><a href="/pages/79c184/" class="sidebar-link">L4-存储引擎II</a></li><li><a href="/pages/594733/" class="sidebar-link">L5-缓冲池</a></li><li><a href="/pages/92f2cf/" class="sidebar-link">L6-哈希表</a></li><li><a href="/pages/fee5ff/" class="sidebar-link">L7-B+Tree</a></li><li><a href="/pages/d55501/" class="sidebar-link">L8-索引并发</a></li><li><a href="/pages/9f7b1a/" class="sidebar-link">L9-排序与聚集</a></li><li><a href="/pages/183cf7/" class="sidebar-link">L10-连表算法</a></li><li><a href="/pages/11e145/" class="sidebar-link">Project#0</a></li><li><a href="/pages/657a42/" class="sidebar-link">2022fall Project#1</a></li><li><a href="/pages/3765e4/" class="sidebar-link">2022fall Project#2</a></li></ul></section></li></ul></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>深入理解分布式系统</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>Mit6.824</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>大数据经典论文导读</span> <span class="arrow right"></span></p> <!----></section></li><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading"><span>消息队列</span> <span class="arrow right"></span></p> <!----></section></li></ul> </aside> <div><main class="page"><div class="theme-vdoing-wrapper "><div class="articleInfo-wrap" data-v-06225672><div class="articleInfo" data-v-06225672><ul class="breadcrumbs" data-v-06225672><li data-v-06225672><a href="/" title="首页" class="iconfont icon-home router-link-active" data-v-06225672></a></li> <li data-v-06225672><a href="/categories/?category=%E5%A4%A7%E6%95%B0%E6%8D%AE" title="分类" data-v-06225672>大数据</a></li><li data-v-06225672><a href="/categories/?category=%E6%95%B0%E6%8D%AE%E5%BA%93" title="分类" data-v-06225672>数据库</a></li><li data-v-06225672><a href="/categories/?category=CMU15445" title="分类" data-v-06225672>CMU15445</a></li></ul> <div class="info" data-v-06225672><div title="作者" class="author iconfont icon-touxiang" data-v-06225672><a href="https://github.com/Flokken" target="_blank" title="作者" class="beLink" data-v-06225672>flokken</a></div> <div title="创建时间" class="date iconfont icon-riqi" data-v-06225672><a href="javascript:;" data-v-06225672>2023-11-28</a></div> <!----></div></div></div> <!----> <div class="content-wrapper"><div class="right-menu-wrapper"><div class="right-menu-margin"><div class="right-menu-title">目录</div> <div class="right-menu-content"></div></div></div> <h1><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAAAXNSR0IArs4c6QAABH1JREFUSA3tVl1oHFUUPmdmd2ltklqbpJDiNnXFmgbFktho7YMPNiJSSZM0+CAYSkUELVhM6YuwIPpgoOKDqOBDC0XE2CQoNtQXBUFTTcCi+Wlh1V2TQExsUzcltd3M9Tt3ZjZzZ2fT+OJTL8yeM+eee757fmeJbq//KQL8X3DUSFOcfr7cRsRtxNQMWueeVzOkaITIGqQHNg5y8+jNW9ldM7A6nTpAjuolUikAwq7CE3WcM2RRDz+XGVgN3FptU/aUSlvq9Pa3iZ1+sgAqJyyAFqkipd9dqiwHF3P65YycLWc/6sqGrvoEoIp6DOFaX5h6+dnfjkWprwqsPk0dUGq5vySwDImC10KxFHgGL1SWoc92O3eVht09qdXNH11I2SsTsJYqMWzihqGMi+A+Garf3BAuuLI5oGlULyNfyB/HYNujwktOfRrMr5t77NmevqaUopx0grnKAyvVpmwUDB4x6FPXuGvYLTDwWsejwgtgkYKPqRJg8SV6xaiZ3ZTppGneS4yfH5/66fZSDHv+QZci/+h5c5UHtpy67JUqGppM0sh0Nc1dW6/N1W5Yoqat8/TU/VnadmdeW2PLLSyh0cvxBs3KbqTmwYPpxN4do/mzE8nEpvX/UMu2Wbp74zUAK5q6WkHns7V0eWkdPbPzd3rxkTGybadYySumVzhcaJFbs5UrEkQ/+CK8gF5dnh/6ciIZ73gwQ927L1IitoxKLXYP3SjYdOrHHfTZhRRlFyrorafPk20B3HPD1y2G3qKZME5Jcf3t/HUC13/8tSd++vqFveMUTwAUxSUFI1QekR1+bIze3D9MF2aq6cPvG72CgnldWCFqyRw3lwH8ZMerjTD9ElRO7Gv44wNpC90aASqGfVlz/Rx17srQ57/UU26hkhQqUB7dBR71WmzQhHUnblGmVOEw0jhbV1n9OlXUDCIRGaNV5Jp43N516fN7JmnTHdfp7Hgy0luO4aMhtkLL8Bi3bUWYvzh5Mn1dTxrL6QmGuRhGL/TiTTxRoEdTszSaq9GR0NGA3KdkOz3hqSV3MIDhQ5IVX/Ivx3umBti2es2h4eZby7x8br1rkf7Mo90AqC8aQ3sJeNzqFRu+vSANAQe3PL7l0HGOAdwDCeZYvNKeoZp1Qfs6Aipndh86HmFRi0LAnEO47wsqM6cdfjh3jBPUzhZy7nvlUfFsamED1VQt6aISHVymXZ/B2aCtIG8AI8xfobj2d3en1wWVhOeHELKmLQ1s211s88comkv4UCwWyF787mJdYXtNfhKAXVqnKTq8QZvGAGGOfaTo5pGZ/PwbUCr5+DPr/1J92JNHr9aOl/F3iI5+O1nfybsGxoimvZ3ViWSluDITw3P37mypheDIPY0tw7+O/5ApbkYw+zpfaUVu32Pi98+defdUhEpZkRFq0aqyNh9FuL9hpYbEm6iwi0z2REd09ZmyENEbuhjDWzKvZXTqKYaBIr3tt5kuPtQBZFvEUwHt60vfCNu41XsksH9Ij1BMMz1Y0OOunHNShFIP5868g5zeXmuLwL9T4b6Q2+KejgAAAABJRU5ErkJggg==">C++的一些语法<!----></h1>  <div class="theme-vdoing-content content__default"><blockquote><p>开始学习这个课程的时候，我的心情很复杂，认真学习计算机知识最好的时间是大学本科，其次是现在。回过头去看，我发现自己基本上什么也不会。</p> <p>本科时卷绩点，卷一些毫无用处的东西，浪费了时间，浪费了精力，也导致了我狭隘的目光。记得21年的时候看知乎，推荐去看国外的课程，那时候却不以为然，浪费了大把时间。如今已经到了23年了，真的马上就业了才想起了主动学习的重要性，才来恶补。</p> <p>劝君莫惜金缕衣，劝君惜取少年时。如今回头看20年-22年的自己，的确是虚度了，时不我待啊。</p></blockquote> <p>这里只介绍一些如果没做过项目，C++里可能不是很清楚的一些语法。</p> <blockquote><p>参考：https://subingwen.cn/cplusplus/</p> <p>&lt;&lt;黑马教程C++&gt;&gt;</p> <p>C++11</p> <ul><li><a href="http://www.thegeekstuff.com/2016/02/c-plus-plus-11/" target="_blank" rel="noopener noreferrer">short tutorial<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li> <li><a href="https://en.cppreference.com/w/" target="_blank" rel="noopener noreferrer">cppreference<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></li></ul> <p>调试工具：gdb</p> <p>在ubuntun上装了很久失败，centos一个yum命令搞定，果然不能轴。。。。</p></blockquote> <h2 id="内存分区模型"><a href="#内存分区模型" class="header-anchor">#</a> 内存分区模型</h2> <p>C++程序在执行时，将内存大方向划分为<strong>4个区域</strong></p> <ul><li>代码区：存放函数体的二进制代码，由操作系统进行管理的</li> <li>全局区：存放全局变量和静态变量以及常量</li> <li>栈区：由编译器自动分配释放, 存放函数的参数值,局部变量等</li> <li>堆区：由程序员分配和释放,若程序员不释放,程序结束时由操作系统回收</li></ul> <h3 id="程序运行前"><a href="#程序运行前" class="header-anchor">#</a> 程序运行前</h3> <p>在程序编译后，生成了exe可执行程序，<strong>未执行该程序前</strong>分为两个区域</p> <p>​	<strong>代码区：</strong></p> <ul><li><p>存放 CPU 执行的机器指令</p></li> <li><p>代码区是<strong>共享</strong>的，共享的目的是对于频繁被执行的程序，只需要在内存中有一份代码即可</p></li> <li><p>代码区是<strong>只读</strong>的，使其只读的原因是防止程序意外地修改了它的指令</p></li></ul> <p>​	<strong>全局区：</strong></p> <ul><li><p>全局变量和静态变量</p></li> <li><p>常量区： const修饰的全局常量  和 字符串常量比如（&quot;aaaa&quot;）</p></li> <li><p>==该区域的数据在程序结束后由操作系统释放==.</p></li></ul> <p><strong>示例：</strong></p> <div class="language-c++ line-numbers-mode"><pre class="language-text"><code>//全局变量
+int g_a = 10;
+int g_b = 10;
+
+//全局常量
+const int c_g_a = 10;
+const int c_g_b = 10;
+
+int main() {
+
+	//局部变量
+	int a = 10;
+	int b = 10;
+
+	//打印地址
+	cout &lt;&lt; &quot;局部变量a地址为： &quot; &lt;&lt; (int)&amp;a &lt;&lt; endl;
+	cout &lt;&lt; &quot;局部变量b地址为： &quot; &lt;&lt; (int)&amp;b &lt;&lt; endl;
+
+	cout &lt;&lt; &quot;全局变量g_a地址为： &quot; &lt;&lt;  (int)&amp;g_a &lt;&lt; endl;
+	cout &lt;&lt; &quot;全局变量g_b地址为： &quot; &lt;&lt;  (int)&amp;g_b &lt;&lt; endl;
+
+	//静态变量
+	static int s_a = 10;
+	static int s_b = 10;
+
+	cout &lt;&lt; &quot;静态变量s_a地址为： &quot; &lt;&lt; (int)&amp;s_a &lt;&lt; endl;
+	cout &lt;&lt; &quot;静态变量s_b地址为： &quot; &lt;&lt; (int)&amp;s_b &lt;&lt; endl;
+
+	cout &lt;&lt; &quot;字符串常量地址为： &quot; &lt;&lt; (int)&amp;&quot;hello world&quot; &lt;&lt; endl;
+	cout &lt;&lt; &quot;字符串常量地址为： &quot; &lt;&lt; (int)&amp;&quot;hello world1&quot; &lt;&lt; endl;
+
+	cout &lt;&lt; &quot;全局常量c_g_a地址为： &quot; &lt;&lt; (int)&amp;c_g_a &lt;&lt; endl;
+	cout &lt;&lt; &quot;全局常量c_g_b地址为： &quot; &lt;&lt; (int)&amp;c_g_b &lt;&lt; endl;
+
+	const int c_l_a = 10;
+	const int c_l_b = 10;
+	cout &lt;&lt; &quot;局部常量c_l_a地址为： &quot; &lt;&lt; (int)&amp;c_l_a &lt;&lt; endl;
+	cout &lt;&lt; &quot;局部常量c_l_b地址为： &quot; &lt;&lt; (int)&amp;c_l_b &lt;&lt; endl;
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br></div></div><p>打印结果：</p> <img src="https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20231129144617000.png" alt="image-20231129144617000" style="zoom:80%;"> <h3 id="程序运行后"><a href="#程序运行后" class="header-anchor">#</a> 程序运行后</h3> <blockquote><p>这里和jvm运行时划分的堆和栈感觉很像</p></blockquote> <p><strong>栈区：</strong></p> <ul><li><p>由编译器自动分配释放, 存放函数的参数值,局部变量等</p></li> <li><p>注意事项：不要返回局部变量的地址，栈区开辟的数据由编译器自动释放</p></li></ul> <p><strong>示例：</strong></p> <div class="language-c++ line-numbers-mode"><pre class="language-text"><code>int * func()
+{
+	int a = 10;
+	return &amp;a;
+}
+
+int main() {
+
+	int *p = func();
+
+	cout &lt;&lt; *p &lt;&lt; endl;
+	cout &lt;&lt; *p &lt;&lt; endl;
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><p><strong>堆区：</strong></p> <ul><li><p>由程序员分配释放,若程序员不释放,程序结束时由操作系统回收</p></li> <li><p><strong>在C++中主要利用new在堆区开辟内存</strong></p></li></ul> <p><strong>示例：</strong></p> <div class="language-c++ line-numbers-mode"><pre class="language-text"><code>int* func()
+{
+	int* a = new int(10);
+	return a;
+}
+
+int main() {
+
+	int *p = func();
+
+	cout &lt;&lt; *p &lt;&lt; endl;
+	cout &lt;&lt; *p &lt;&lt; endl;
+    
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br></div></div><h3 id="new与delete操作符"><a href="#new与delete操作符" class="header-anchor">#</a> new与delete操作符</h3> <p>C++中利用==new==操作符在堆区开辟数据（也就是申请空间），释放利用操作符 ==delete==（也就是释放空间）</p> <p>语法：<code>new 数据类型</code></p> <p>利用new创建的数据，会返回该数据对应的类型的指针</p> <p><strong>示例：开辟数组</strong></p> <div class="language-c++ line-numbers-mode"><pre class="language-text"><code>//堆区开辟数组
+int main() {
+
+	int* arr = new int[10];
+
+	for (int i = 0; i &lt; 10; i++)
+	{
+		arr[i] = i + 100;
+	}
+
+	for (int i = 0; i &lt; 10; i++)
+	{
+		cout &lt;&lt; arr[i] &lt;&lt; endl;
+	}
+	//释放数组 delete 后加 []
+	delete[] arr;
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br></div></div><h3 id="引用"><a href="#引用" class="header-anchor">#</a> 引用</h3> <p>作用：在C++里就是给变量起别名。</p> <p>语法：<code>数据类型 &amp;别名 = 原名</code></p> <p>本质：在C++内部实现是一个指针常量.</p> <blockquote><p>所以传引用和传指针是一个效果</p></blockquote> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>//编译器发现是引用，转换为 int* const ref = &amp;a;
+void func(int&amp; ref){
+	ref = 100; // ref是引用，转换为*ref = 100
+}
+int main(){
+	int a = 10;
+    
+    //自动转换为 int* const ref = &amp;a; 指针常量是指针指向不可改，也说明为什么引用不可更改
+	int&amp; ref = a; 
+	ref = 20; //内部发现ref是引用，自动帮我们转换为: *ref = 20;
+    
+	cout &lt;&lt; &quot;a:&quot; &lt;&lt; a &lt;&lt; endl;
+	cout &lt;&lt; &quot;ref:&quot; &lt;&lt; ref &lt;&lt; endl;
+    
+	func(a);
+    
+    
+    //特殊，常量引用，引用不能直接赋常量，但是加了const可以，具体如下：
+    //int&amp; ref = 10;  引用本身需要一个合法的内存空间，因此这行错误
+	//加入const就可以了，编译器优化代码，int temp = 10; const int&amp; ref = temp;
+	const int&amp; ref = 10;
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br></div></div><p>注意事项：</p> <ul><li>引用必须初始化</li> <li>引用在初始化后，不可以改变（因为是指针常量）</li></ul> <h2 id="函数"><a href="#函数" class="header-anchor">#</a> 函数</h2> <h3 id="默认参数"><a href="#默认参数" class="header-anchor">#</a> 默认参数</h3> <p>在C++中，函数的形参列表中的形参是可以有默认值的。</p> <p>语法：<code>返回值类型 函数名 （参数= 默认值）{}</code></p> <p><strong>示例：</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>int func(int a, int b = 10, int c = 10) {
+	return a + b + c;
+}
+
+//1. 如果某个位置参数有默认值，那么从这个位置往后，从左向右，必须都要有默认值
+//2. 如果函数声明有默认值，函数实现的时候就不能有默认参数
+int func2(int a = 10, int b = 10);
+int func2(int a, int b) {
+	return a + b;
+}
+
+int main() {
+
+	cout &lt;&lt; &quot;ret = &quot; &lt;&lt; func(20, 20) &lt;&lt; endl;
+	cout &lt;&lt; &quot;ret = &quot; &lt;&lt; func(100) &lt;&lt; endl;
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="占位参数"><a href="#占位参数" class="header-anchor">#</a> 占位参数</h3> <p>C++中函数的形参列表里可以有占位参数，<strong>用来做占位，调用函数时必须填补该位置</strong></p> <p><strong>语法：</strong> <code>返回值类型 函数名 (数据类型){}</code></p> <p><strong>示例：</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>//函数占位参数 ，占位参数也可以有默认参数
+void func(int a, int) {
+	cout &lt;&lt; &quot;this is func&quot; &lt;&lt; endl;
+}
+
+int main() {
+
+	func(10,10); //占位参数必须填补
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h3 id="重载"><a href="#重载" class="header-anchor">#</a> 重载</h3> <blockquote><p>和java重载基本一致，</p></blockquote> <p>**作用：**函数名可以相同，提高复用性</p> <p><strong>函数重载满足条件：</strong></p> <ul><li>同一个作用域下</li> <li>函数名称相同</li> <li>函数参数<strong>类型不同</strong>  或者 <strong>个数不同</strong> 或者 <strong>顺序不同</strong></li></ul> <p><strong>注意:</strong>  函数的返回值不可以作为函数重载的条件</p> <h2 id="面对对象设计"><a href="#面对对象设计" class="header-anchor">#</a> 面对对象设计</h2> <p>高级程序设计语言里的类和继承的概念都大差不差。C++面对对象的三大特性分别是：<strong>封装，继承，多态</strong></p> <blockquote><p>C++也是一切皆对象，对象有其属性和行为</p></blockquote> <h3 id="封装"><a href="#封装" class="header-anchor">#</a> 封装</h3> <ul><li>将属性和行为作为一个整体，表现生活中的事物</li> <li><strong>将属性和行为加以权限控制</strong></li></ul> <h3 id="类"><a href="#类" class="header-anchor">#</a> 类</h3> <h4 id="struct和class的区别"><a href="#struct和class的区别" class="header-anchor">#</a> Struct和class的区别</h4> <p>在C++中 struct和class唯一的<strong>区别</strong>就在于 <strong>默认的访问权限不同</strong></p> <p>区别：</p> <ul><li><strong>struct 默认权限为公共</strong></li> <li><strong>class   默认权限为私有</strong></li></ul> <h4 id="构造函数与析构函数"><a href="#构造函数与析构函数" class="header-anchor">#</a> 构造函数与析构函数</h4> <ul><li>构造函数：主要作用在于创建对象时为对象的成员属性赋值，构造函数由编译器自动调用，无须手动调用。</li> <li>析构函数：主要作用在于对象<strong>销毁前</strong>系统自动调用，执行一些清理工作。</li></ul> <p><strong>构造函数语法：</strong><code>类名(){}</code></p> <ol><li>构造函数，没有返回值也不写void</li> <li>函数名称与类名相同</li> <li>构造函数可以有参数，因此可以发生重载</li> <li>程序在调用对象时候会自动调用构造，无须手动调用,而且只会调用一次</li></ol> <blockquote><p>构造函数处理无参构造函数，还有有参构造函数和拷贝构造函数</p> <p>其中拷贝构造函数调用时机：</p> <ul><li><strong>使用一个已经创建完毕的对象来初始化一个新对象</strong></li> <li>值传递的方式给函数参数传值</li> <li>以值方式返回局部对象</li></ul></blockquote> <p><strong>析构函数语法：</strong> <code>~类名(){}</code></p> <ol><li>析构函数，没有返回值也不写void</li> <li>函数名称与类名相同,在名称前加上符号  ~</li> <li>析构函数不可以有参数，因此不可以发生重载</li> <li>程序在对象销毁前会自动调用析构，无须手动调用,而且只会调用一次</li></ol> <p>举例</p> <div class="language-c++ line-numbers-mode"><pre class="language-text"><code>//1、构造函数分类
+// 按照参数分类分为 有参和无参构造   无参又称为默认构造函数
+// 按照类型分类分为 普通构造和拷贝构造
+
+class Person {
+public:
+	//无参（默认）构造函数
+	Person() {
+		cout &lt;&lt; &quot;无参构造函数!&quot; &lt;&lt; endl;
+	}
+	//有参构造函数
+	Person(int a) {
+		age = a;
+		cout &lt;&lt; &quot;有参构造函数!&quot; &lt;&lt; endl;
+	}
+	//拷贝构造函数
+	Person(const Person&amp; p) {
+		age = p.age;
+		cout &lt;&lt; &quot;拷贝构造函数!&quot; &lt;&lt; endl;
+	}
+	//析构函数
+	~Person() {
+		cout &lt;&lt; &quot;析构函数!&quot; &lt;&lt; endl;
+	}
+public:
+	int age;
+};
+//2、构造函数的调用
+//调用无参构造函数
+void test01() {
+	Person p; //调用无参构造函数
+}
+//调用有参的构造函数
+void test02() {
+	//2.1  括号法，常用
+	Person p1(10);
+	//注意1：调用无参构造函数不能加括号，如果加了编译器认为这是一个函数声明
+	//所以无参构造函数直接这么写，Person p1；
+	//2.2 显式法
+    //嗲用普通构造函数
+	Person p2 = Person(10); 
+    //调用拷贝构造函数
+	Person p3 = Person(p2);
+    //2.3直接复制
+	Person p4 = 10; /0); 
+    //注意这里，如果有指针类型变量，需要我们实现拷贝构造函数来实现深拷贝
+	Person p5 = p4;
+
+}
+int main() {
+	test01();
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br></div></div><p><strong>注意：</strong></p> <ul><li>如果没有实现构造函数或者析构函数，编译器会自动给这个类实现一个空的构造函数或者析构函数</li> <li>如果类的成员中还有类，比如A类有成员变量B类，那么构造函数和析构函数顺序是
+<ul><li>创建一个A类对象时，先调用B类构造方法，再调用A类构造方法</li> <li>释放一个A类对象时，先调用A类析构方法，再调用B类析构方法</li></ul></li></ul> <h5 id="深拷贝和浅拷贝"><a href="#深拷贝和浅拷贝" class="header-anchor">#</a> 深拷贝和浅拷贝</h5> <blockquote><p>很经典的问题，需要掌握</p></blockquote> <p>浅拷贝：简单的赋值拷贝操作，编译器会自己实现</p> <p>深拷贝：在堆区重新申请空间，进行拷贝操作。其实就是要我们写一个拷贝构造函数。</p> <p>区别：<strong>在未定义拷贝构造函数的情况下，系统会调用默认的拷贝函数——即浅拷贝（不用自己构造），它能够完成成员的简单的值的拷贝一一复制。<strong>当数据成员中没有指针时，浅拷贝是可行的；但当数据成员中有指针时，如果采用简单的浅拷贝，则两类中的两个指针将指向同一个地址（同一个堆区），<strong>当对象快结束时，会调用两次析构函数</strong>（析构函数也无需自己构造，但想要知道析构函数的工作可以自己构造析构函数用输出来记录），而导致</strong>指针悬挂</strong>现象，所以，此时，必须采用深拷贝。</p> <p><strong>注：如果属性有在堆区开辟的，一定要自己提供拷贝构造函数，防止浅拷贝带来的问题</strong></p> <blockquote><p>什么叫属性在堆开辟空间？我们知道java有引用类型，就是存在堆中的，这里C++里其实就是指针类型的属性，就需要在堆里开辟空间。</p> <p>简而言之，<strong>如果我们类的属性有指针类型，就要我们必须实现一个拷贝构造函数。</strong></p></blockquote> <p>示例:下面的person中就有一个属性<code>m_heigth</code>，那么我就需要实现拷贝构造函数来实现深拷贝</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>class Person {
+public:
+	//无参（默认）构造函数
+	Person() {
+		cout &lt;&lt; &quot;无参构造函数!&quot; &lt;&lt; endl;
+	}
+	//有参构造函数
+	Person(int age ,int height) {
+		cout &lt;&lt; &quot;有参构造函数!&quot; &lt;&lt; endl;
+		m_age = age;
+		m_height = new int(height);
+		
+	}
+	//拷贝构造函数  
+	Person(const Person&amp; p) {
+		cout &lt;&lt; &quot;拷贝构造函数!&quot; &lt;&lt; endl;
+		//如果不利用深拷贝在堆区创建新内存，会导致浅拷贝带来的重复释放堆区问题，然后造成指针悬挂
+		m_age = p.m_age;
+		m_height = new int(*p.m_height);
+	}
+	//析构函数
+	~Person() {
+		cout &lt;&lt; &quot;析构函数!&quot; &lt;&lt; endl;
+		if (m_height != NULL)
+		{
+			delete m_height;
+		}
+	}
+public:
+	int m_age;
+	int* m_height;
+};
+
+void test01()
+{
+	Person p1(18, 180);
+	Person p2(p1);
+	cout &lt;&lt; &quot;p1的年龄： &quot; &lt;&lt; p1.m_age &lt;&lt; &quot; 身高： &quot; &lt;&lt; *p1.m_height &lt;&lt; endl;
+	cout &lt;&lt; &quot;p2的年龄： &quot; &lt;&lt; p2.m_age &lt;&lt; &quot; 身高： &quot; &lt;&lt; *p2.m_height &lt;&lt; endl;
+}
+int main() {
+	test01();
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br></div></div><h5 id="初始化列表"><a href="#初始化列表" class="header-anchor">#</a> 初始化列表</h5> <p>C++提供了初始化列表语法，用来初始化属性。也就是更方便的构造函数</p> <p><strong>语法：</strong><code>构造函数()：属性1(值1),属性2（值2）... {}</code></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>public:
+	//传统方式初始化
+	Person(int a, int b, int c) {
+		m_A = a;
+		m_B = b;
+		m_C = c;
+	}
+
+	//初始化列表方式初始化
+	Person(int a, int b, int c) :m_A(a), m_B(b), m_C(c) {}
+//Person p(1, 2, 3);调用时还是一样的
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><h4 id="静态成员"><a href="#静态成员" class="header-anchor">#</a> 静态成员</h4> <p>静态成员就是在成员变量和成员函数前加上关键字static，称为静态成员</p> <p>静态成员分为：</p> <ul><li>静态成员变量
+<ul><li>所有对象共享同一份数据</li> <li>在编译阶段分配内存</li> <li>类内声明，类外初始化</li></ul></li> <li>静态成员函数
+<ul><li>所有对象共享同一个函数</li> <li><strong>静态成员函数只能访问静态成员变量</strong></li></ul></li></ul> <p>静态函数与静态变量访问方式：</p> <ul><li>对象访问与类名访问</li></ul> <p>举例</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>class Person
+{
+	
+public:
+	static int m_A; //静态成员变量
+	static void func()
+	{	//只能访问静态成员变量
+		cout &lt;&lt; &quot;func调用&quot; &lt;&lt; endl;
+		m_A = 100;
+	}
+private:
+	static int m_B; //静态成员变量也是有访问权限的
+};
+//类里面声明，类外面初始化
+int Person::m_A = 10;
+int Person::m_B = 10;
+int main{
+   //1.对象访问
+    Person p1;
+	cout &lt;&lt; &quot;p1.m_A = &quot; &lt;&lt; p1.m_A &lt;&lt; endl;
+	//2、通过类名
+	cout &lt;&lt; &quot;m_A = &quot; &lt;&lt; Person::m_A &lt;&lt; endl;
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><blockquote><p>除了静态成员，还有两种特殊的成员，遇到再来补充吧</p> <p><strong>常函数：</strong></p> <ul><li>成员函数后加const后我们称为这个函数为<strong>常函数</strong></li> <li>常函数内不可以修改成员属性</li> <li>成员属性声明时加关键字mutable后，在常函数中依然可以修改</li></ul> <p><strong>常对象：</strong></p> <ul><li>声明对象前加const称该对象为常对象</li> <li>常对象只能调用常函数</li></ul></blockquote> <h4 id="this指针"><a href="#this指针" class="header-anchor">#</a> this指针</h4> <p>记住：<strong>C++的this指针指向被调用的成员函数所属的对象</strong></p> <h3 id="多态"><a href="#多态" class="header-anchor">#</a> 多态</h3> <p><strong>多态是C++面向对象三大特性之一</strong></p> <blockquote><p>有些名词会混用：</p> <p>父类=基类，子类=派生类</p></blockquote> <p><strong>多态分为两类</strong></p> <ul><li><strong>静态多态: 函数重载 和 运算符重载属于静态多态，复用函数名</strong></li> <li><strong>动态多态: 派生类和虚函数实现运行时多态</strong></li></ul> <p>静态多态和动态多态区别：</p> <ul><li>静态多态的函数地址早绑定  -  编译阶段确定函数地址</li> <li>动态多态的函数地址晚绑定  -  运行阶段确定函数地址</li></ul> <h4 id="虚函数与抽象类"><a href="#虚函数与抽象类" class="header-anchor">#</a> 虚函数与抽象类</h4> <p>在实现c++多态时会用到虚函数。<strong>虚函数使用的其核心目的是通过基类通过指针访问派生类定义的函数，但是不代表他不被实现。</strong></p> <p><strong>纯虚函数才代表这个函数没有被实现</strong>，（纯虚函数可以理解为接口）</p> <blockquote><p>父类中实现虚函数是毫无意义的，<strong>主要都是调用子类重写的内容</strong>，所以我们常常使用纯虚函数</p></blockquote> <p>虚函数与纯虚函数区别：</p> <ul><li>虚函数：父类可以有实现也可以没有实现，子类可以实现他也可以不实现他</li> <li>纯虚函数：父类只能被声明，只能在子类实现，并且必须实现。（类似于接口）</li></ul> <p>纯虚函数语法：<code>virtual 返回值类型 函数名 （参数列表）= 0 ;</code><strong>当类中有了纯虚函数，这个类也称为==抽象类==</strong></p> <p><strong>抽象类特点</strong>：</p> <ul><li>无法实例化对象</li> <li>子类必须重写抽象类中的纯虚函数，否则也属于抽象类</li></ul> <p>举例</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>class Base
+{
+public:
+	//纯虚函数
+	//类中只要有一个纯虚函数就称为抽象类
+	//抽象类无法实例化对象
+	//子类必须重写父类中的纯虚函数，否则也属于抽象类
+	virtual void func() = 0;
+};
+
+class Son :public Base
+{
+public:
+    //实现了纯虚函数
+	virtual void func() 
+	{
+		cout &lt;&lt; &quot;func调用&quot; &lt;&lt; endl;
+	};
+};
+
+void test01()
+{
+	Base * base = NULL;
+	//base = new Base; // 错误，抽象类无法实例化对象
+	base = new Son;
+	base-&gt;func();//父类指针可以调用子类实现的函数，靠的就是多态，也是虚函数
+	delete base;//记得销毁
+}
+
+int main() {
+
+	test01();
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br></div></div><h4 id="虚析构和纯虚析构"><a href="#虚析构和纯虚析构" class="header-anchor">#</a> 虚析构和纯虚析构</h4> <p>多态使用时，如果子类中有属性开辟到堆区，那么父类指针在释放时无法调用到子类的析构代码</p> <p><strong>解决方式：将父类中的析构函数改为虚析构或者纯虚析构（就是加上virtual关键字）</strong></p> <p>虚析构和纯虚析构共性：</p> <ul><li>可以解决父类指针释放子类对象</li> <li>都需要有具体的函数实现</li></ul> <p>虚析构和纯虚析构区别：</p> <ul><li><strong>如果是纯虚析构，该类属于抽象类，无法实例化对象（和纯虚函数一个特性，因为纯虚析构函数）</strong></li></ul> <p>虚析构语法：</p> <p><code>virtual ~类名(){}</code></p> <p>纯虚析构语法：</p> <p><code>virtual ~类名() = 0;</code></p> <p><code>类名::~类名(){}</code></p> <p>总结：</p> <p>​	1. 虚析构或纯虚析构就是用来解决通过父类指针释放子类对象</p> <p>​	2. 如果子类中没有堆区数据，可以不写为虚析构或纯虚析构</p> <p>​	3. 拥有纯虚析构函数的类也属于抽象类</p> <p><strong>示例：</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>class Animal {
+public:
+	Animal()
+	{
+		cout &lt;&lt; &quot;Animal 构造函数调用！&quot; &lt;&lt; endl;
+	}
+	virtual void Speak() = 0;
+	//析构函数加上virtual关键字，变成虚析构函数
+	//virtual ~Animal()
+	//{
+	//	cout &lt;&lt; &quot;Animal虚析构函数调用！&quot; &lt;&lt; endl;
+	//}
+	virtual ~Animal() = 0;
+};
+
+Animal::~Animal()
+{
+	cout &lt;&lt; &quot;Animal 纯虚析构函数调用！&quot; &lt;&lt; endl;
+}
+//和包含普通纯虚函数的类一样，包含了纯虚析构函数的类也是一个抽象类。不能够被实例化。
+class Cat : public Animal {
+public:
+	Cat(string name)
+	{
+		cout &lt;&lt; &quot;Cat构造函数调用！&quot; &lt;&lt; endl;
+		m_Name = new string(name);
+	}
+	virtual void Speak()
+	{
+		cout &lt;&lt; *m_Name &lt;&lt;  &quot;小猫在说话!&quot; &lt;&lt; endl;
+	}
+	~Cat()
+	{
+		cout &lt;&lt; &quot;Cat析构函数调用!&quot; &lt;&lt; endl;
+		if (this-&gt;m_Name != NULL) {
+			delete m_Name;
+			m_Name = NULL;
+		}
+	}
+public:
+	string *m_Name;
+};
+void test01()
+{
+	Animal *animal = new Cat(&quot;Tom&quot;);
+	animal-&gt;Speak();
+
+	//通过父类指针去释放，会导致子类对象可能清理不干净，造成内存泄漏
+	//怎么解决？给基类增加一个虚析构函数
+	//虚析构函数就是用来解决通过父类指针释放子类对象
+	delete animal;
+}
+int main() {
+	test01();
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br></div></div><h2 id="模板"><a href="#模板" class="header-anchor">#</a> 模板</h2> <blockquote><p>这里应该联想到java的泛型</p></blockquote> <p>C++的模板<strong>是泛型编程的体现</strong>，有两种模板机制：</p> <ul><li>函数模板</li> <li>类模板</li></ul> <h3 id="函数模板"><a href="#函数模板" class="header-anchor">#</a> 函数模板</h3> <p>建立一个通用函数，其函数返回值类型和形参类型可以不具体制定，用一个<strong>虚拟的类型</strong>来代表。</p> <p><strong>语法：</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>template&lt;typename T&gt;
+函数声明或定义
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><strong>解释：</strong></p> <p>template  ---  声明创建模板</p> <p>typename  --- 表面其后面的符号是一种数据类型，可以用class代替</p> <p>T    ---   通用的数据类型，名称可以替换，通常为大写字母</p> <p>总结：</p> <ul><li>函数模板利用关键字 template</li> <li>使用函数模板有两种方式：<strong>自动类型推导、显示指定类型</strong></li> <li>模板的目的是为了提高复用性，将类型参数化</li></ul> <p>注意：对于函数模板来说，<strong>使用模板时必须确定出通用数据类型T，并且能够推导出一致的类型</strong>，否则会失败，详见下面的例子</p> <p><strong>示例：利用模板实现元素交换</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>//1。如果不用模板，我们对于不同类型的变量，需要分别写函数
+//交换整型函数
+void swapInt(int&amp; a, int&amp; b) {
+	int temp = a;
+	a = b;
+	b = temp;
+}
+
+//交换浮点型函数
+void swapDouble(double&amp; a, double&amp; b) {
+	double temp = a;
+	a = b;
+	b = temp;
+}
+
+//2.利用模板提供通用的交换函数（感觉就是不指定类型，用一个壳子来代指他们，和java泛型用起来一样，但是底层实现不一样）
+template&lt;typename T&gt;
+void mySwap(T&amp; a, T&amp; b)
+{
+	T temp = a;
+	a = b;
+	b = temp;
+}
+
+void test01()
+{
+	int a = 10;
+	int b = 20;
+    int c='c';
+	//swapInt(a, b);
+	//利用模板实现交换
+	//1、自动类型推导
+	mySwap(a, b);
+	//2、显示指定类型
+	mySwap&lt;int&gt;(a, b);
+    
+    //推导类型注意事项
+	//自动推导不出一样的类型会失败	
+//    mysSwap(a,c)
+//mySwap&lt;int&gt;(a,c)可以成功
+
+}
+int main() {
+	test01();
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br></div></div><p>在函数模板调用时，会有类型转化相关的疑问，可以对比普通函数类型转换来看：</p> <ul><li>普通函数调用时可以发生自动类型转换（隐式类型转换）</li> <li>函数模板调用时，<strong>如果利用自动类型推导，不会发生隐式类型转换</strong></li> <li>如果利用显示指定类型的方式，可以发生隐式类型转换,比如上面的<code>mySwap&lt;int&gt;(a,c)</code>,c是char类型，这里会强制转换为<code>int</code></li></ul> <h4 id="局限"><a href="#局限" class="header-anchor">#</a> 局限</h4> <h3 id="类模板"><a href="#类模板" class="header-anchor">#</a> 类模板</h3> <p>类模板作用：</p> <ul><li>建立一个通用类，<strong>类中的成员 数据类型可以不具体制定，用一个虚拟的类型来代表。</strong></li></ul> <p><strong>语法：</strong></p> <div class="language-c++ line-numbers-mode"><pre class="language-text"><code>template&lt;typename T&gt;
+类
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><p><strong>解释：</strong></p> <p>template  ---  声明创建模板</p> <p>typename  --- 表面其后面的符号是一种数据类型，可以用class代替</p> <p>T    ---   通用的数据类型，名称可以替换，通常为大写字母</p> <p><strong>示例：</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>#include &lt;string&gt;
+//类模板
+template&lt;class NameType, class AgeType&gt; 
+class Person
+{
+public:
+	Person(NameType name, AgeType age)
+	{
+		this-&gt;mName = name;
+		this-&gt;mAge = age;
+	}
+	void showPerson()
+	{
+		cout &lt;&lt; &quot;name: &quot; &lt;&lt; this-&gt;mName &lt;&lt; &quot; age: &quot; &lt;&lt; this-&gt;mAge &lt;&lt; endl;
+	}
+public:
+    //看这里，类模板中这些元素没有一个确定的类型，而是自己定义的类型
+	NameType mName;
+	AgeType mAge;
+};
+
+void test01()
+{
+	// 指定NameType 为string类型，AgeType 为 int类型
+	Person&lt;string, int&gt;P1(&quot;孙悟空&quot;, 999);
+	P1.showPerson();
+}
+
+int main() {
+
+	test01();
+
+	system(&quot;pause&quot;);
+
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br></div></div><p>总结：类模板和函数模板语法相似，在声明模板template后面加类，此类称为类模板</p> <h4 id="类模板与函数模板区别"><a href="#类模板与函数模板区别" class="header-anchor">#</a> 类模板与函数模板区别</h4> <p>类模板与函数模板区别主要有两点：</p> <ol><li>类模板没有自动类型推导的使用方式（类模板必须指定类型）</li> <li>类模板在模板参数列表中可以有默认参数</li></ol> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>#include &lt;string&gt;
+//类模板
+template&lt;class NameType, class AgeType = int&gt; 
+class Person
+{
+public:
+	Person(NameType name, AgeType age)
+	{
+		this-&gt;mName = name;
+		this-&gt;mAge = age;
+	}
+	void showPerson()
+	{
+		cout &lt;&lt; &quot;name: &quot; &lt;&lt; this-&gt;mName &lt;&lt; &quot; age: &quot; &lt;&lt; this-&gt;mAge &lt;&lt; endl;
+	}
+public:
+	NameType mName;
+	AgeType mAge;
+};
+
+//1、类模板没有自动类型推导的使用方式
+void test01()
+{
+	// Person p(&quot;孙悟空&quot;, 1000); // 错误 类模板使用时候，不可以用自动类型推导
+	Person &lt;string ,int&gt;p(&quot;孙悟空&quot;, 1000); //必须使用显示指定类型的方式，使用类模板
+	p.showPerson();
+}
+//2、类模板在模板参数列表中可以有默认参数
+void test02()
+{
+	Person &lt;string&gt; p(&quot;猪八戒&quot;, 999); //类模板中的模板参数列表 可以指定默认参数
+	p.showPerson();
+}
+int main() {
+	test01();
+	test02();
+	system(&quot;pause&quot;);
+	return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br></div></div><h2 id="智能指针"><a href="#智能指针" class="header-anchor">#</a> 智能指针</h2> <p>在C++中没有垃圾回收机制，必须自己释放(delete)分配的内存，否则就会造成内存泄露。解决这个问题最有效的方法是使用智能指针（smart pointer）。</p> <p>智能指针是存储指向动态分配（堆）对象指针的类，用于生存期的控制，能够确保在离开指针所在作用域时，自动地销毁动态分配的对象，防止内存泄露。<strong>智能指针的核心实现技术是引用计数，每使用它一次，内部引用计数加1，每析构一次内部的引用计数减1，减为0时，删除所指向的堆内存。</strong></p> <blockquote><p>background：</p> <p>C++栈上的内存可以编译器，编译器释放。堆上的内存是手动申请，手动释放。（手动释放很容易搞错，所以引入智能指针）</p> <p>java：</p> <p>释放内存都是自动的，因为有垃圾回收机制。</p></blockquote> <p>分类：</p> <p>C++11之前：auto_ptr</p> <p>C++11之后：auto_ptr被弃用，引用三个智能指针，也是我们重点学习的</p> <ul><li><p>std::shared_ptr：共享的智能指针</p></li> <li><p>std::unique_ptr：独占的智能指针</p></li> <li><p>std::weak_ptr：弱引用的智能指针，它不共享指针，不能操作资源，是用来监视shared_ptr的。</p></li></ul> <h3 id="shared-ptr"><a href="#shared-ptr" class="header-anchor">#</a> shared_ptr</h3> <p><strong>共享智能指针是指多个智能指针可以同时管理同一块有效的内存</strong>，共享智能指针<code>shared_ptr</code> 是一个模板类，如果要进行初始化有三种方式：通过构造函数、std::make_shared辅助函数以及reset方法。<strong>共享智能指针对象初始化完毕之后就指向了要管理的那块堆内存</strong>，如果想要查看当前有多少个智能指针同时管理着这块内存可以使用共享智能指针提供的一个成员函数<code>use_count</code>，函数原型如下：</p> <blockquote><p>这里要注意，共享指针的make_shared等拷贝构造函数来构造一个新共享指针时，其指向的底层数据是不会被复制的，共享指针和普通指针一样，也就是一个指针。</p> <p><strong>所以对于建个共享指针变量，如果都指向一个空间，其实就相当于起了个别名</strong></p></blockquote> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>// 管理当前对象的 shared_ptr 实例数量，或若无被管理对象则为 0。
+long use_count() const noexcept;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br></div></div><h4 id="初始化"><a href="#初始化" class="header-anchor">#</a> <strong>初始化</strong></h4> <ul><li>构造函数初始化</li> <li>通过std::make_shared初始化</li> <li>通过拷贝和移动构造函数初始化</li></ul> <blockquote><p><a href="https://subingwen.cn/cpp/shared_ptr/" target="_blank" rel="noopener noreferrer">共享智能指针 | 爱编程的大丙 (subingwen.cn)<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <p><strong>构造函数初始化和通过拷贝和移动构造函数初始化</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+int main()
+{
+    // 使用智能指针管理一块 int 型的堆内存
+    shared_ptr&lt;int&gt; ptr1(new int(520));
+    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
+    //调用拷贝构造函数
+    shared_ptr&lt;int&gt; ptr2(ptr1);
+    //调用移动构造函数
+    shared_ptr&lt;int&gt; ptr4(std::move(ptr1));
+    // 创建智能指针对象, 不管理任何内存
+    shared_ptr&lt;int&gt; ptr3;
+    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
+    // 创建智能指针对象, 初始化为空
+    shared_ptr&lt;int&gt; ptr4(nullptr);
+    cout &lt;&lt; &quot;ptr4管理的内存引用计数: &quot; &lt;&lt; ptr4.use_count() &lt;&lt; endl;
+
+    return 0;
+ 
+}
+//1
+//0
+//0
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br></div></div><p>注意：</p> <p>如果智能指针被初始化了一块有效内存，那么这块内存的引用计数+1，如果智能指针没有被初始化或者被初始化为nullptr空指针，引用计数不会+1。另外，不要使用一个原始指针初始化多个shared_ptr。</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>int *p = new int;
+shared_ptr&lt;int&gt; p1(p);
+shared_ptr&lt;int&gt; p2(p);		// error, 编译不会报错, 运行会出错
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p><strong>std::make_shared初始化</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>template&lt; class T, class... Args &gt;
+shared_ptr&lt;T&gt; make_shared( Args&amp;&amp;... args );
+
+T：模板参数的数据类型
+Args&amp;&amp;... args ：要初始化的数据，如果是通过make_shared创建对象，需按照构造函数的参数列表指定
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p><strong>注意：</strong></p> <p>使用std::make_shared()模板函数可以完成内存地址的创建，并将最终得到的内存地址传递给共享智能指针对象管理</p> <ul><li>如果申请的内存是普通类型，通过函数的（）可完成地址的初始化。</li> <li><strong>如果要创建一个类对象，函数的（）内部需要指定构造对象需要的参数，也就是类构造函数的参数。</strong></li></ul> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>class Test
+{
+public:
+    Test(int x) 
+    {
+        cout &lt;&lt; &quot;construct Test, x = &quot; &lt;&lt; x &lt;&lt; endl;
+    }
+};
+int main(){
+// 使用智能指针管理一块 int 型的堆内存, 内部引用计数为 1
+    shared_ptr&lt;int&gt; ptr1 = make_shared&lt;int&gt;(520);
+    cout &lt;&lt; &quot;ptr1管理的内存引用计数: &quot; &lt;&lt; ptr1.use_count() &lt;&lt; endl;
+	//创建类类型对象
+    shared_ptr&lt;Test&gt; ptr3 = make_shared&lt;Test&gt;(520);
+    cout &lt;&lt; &quot;ptr3管理的内存引用计数: &quot; &lt;&lt; ptr3.use_count() &lt;&lt; endl;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><h4 id="常用方法"><a href="#常用方法" class="header-anchor">#</a> 常用方法</h4> <table><thead><tr><th>方法</th> <th>作用</th></tr></thead> <tbody><tr><td>find()</td> <td>容器类的方法，接受一个key，返回一个具有该可以迭代器</td></tr> <tr><td>end()</td> <td><code>C++容器类提供的成员函数之一。它返回一个迭代器，指向容器的末尾位置。在使用迭代器遍历容器时，通常将</code>end()`与迭代器进行比较，以判断是否已经到达容器的末尾。</td></tr> <tr><td>get()</td> <td>get()<code>是</code>std::shared_ptr<code>类提供的成员函数。它返回指向被</code>std::shared_ptr<code>管理的对象的原始指针。</code></td></tr></tbody></table> <h4 id="删除器"><a href="#删除器" class="header-anchor">#</a> 删除器</h4> <p>当智能指针管理的内存对应的引用计数变为0的时候，这块内存就会被智能指针析构掉了。另外，我们在初始化智能指针的时候也可以自己指定删除动作，这个删除操作对应的函数被称之为删除器，这个删除器函数本质是一个回调函数，我们只需要进行实现，其调用是由智能指针完成的</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+// 自定义删除器函数，释放int型内存
+void deleteIntPtr(int* p)
+{
+    delete p;
+    cout &lt;&lt; &quot;int 型内存被释放了...&quot;;
+}
+
+int main()
+{
+    shared_ptr&lt;int&gt; ptr(new int(250), deleteIntPtr);
+    //删除器也可以是lambda函数,其实就是匿名函数
+    shared_ptr&lt;int&gt; ptr(new int(250), [](int* p) {delete p; });
+
+    return 0;
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br></div></div><h3 id="unique-ptr"><a href="#unique-ptr" class="header-anchor">#</a> unique_ptr</h3> <p>std::unique_ptr是一个独占型的智能指针，它不允许其他的智能指针共享其内部的指针，可以通过它的构造函数初始化一个独占智能指针对象，但是不允许通过赋值将一个unique_ptr赋值给另一个unique_ptr。</p> <p><strong>初始化</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>// 通过构造函数初始化对象
+unique_ptr&lt;int&gt; ptr1(new int(10));
+// error, 不允许将一个unique_ptr赋值给另一个unique_ptr
+unique_ptr&lt;int&gt; ptr2 = ptr1;
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br></div></div><p>相关方法：</p> <h4 id="move-将指针所有权转移"><a href="#move-将指针所有权转移" class="header-anchor">#</a> <strong>Move:将指针所有权转移</strong></h4> <p>std::unique_ptr不允许复制，但是可以通过函数返回给其他的std::unique_ptr，<strong>还可以通过std::move来转译给其他的std::unique_ptr，这样原始指针的所有权就被转移了，这个原始指针还是被独占的。</strong></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>#include &lt;iostream&gt;
+#include &lt;memory&gt;
+using namespace std;
+
+unique_ptr&lt;int&gt; func()
+{
+    return unique_ptr&lt;int&gt;(new int(520));
+}
+int main()
+{
+    // 通过构造函数初始化
+    unique_ptr&lt;int&gt; ptr1(new int(10));
+    // 通过转移所有权的方式初始化
+    unique_ptr&lt;int&gt; ptr2 = move(ptr1);
+    unique_ptr&lt;int&gt; ptr3 = func();
+
+    return 0;
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><p><strong>Reset</strong></p> <p><strong>使用reset方法可以让unique_ptr解除对原始内存的管理，也可以用来初始化一个独占的智能指针。</strong></p> <p><code>void reset( pointer ptr = pointer() ) noexcept;</code></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>int main()
+{
+    unique_ptr&lt;int&gt; ptr1(new int(10));
+    unique_ptr&lt;int&gt; ptr2 = move(ptr1);
+	//解除对原始内存的管理
+    ptr1.reset();
+    //重新指定智能指针管理的原始内存
+    ptr2.reset(new int(250));
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br></div></div><p><strong>Get()</strong></p> <p>获取独占智能指针管理的原始地址</p> <p><code>pointer get() const noexcept;</code></p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>
+int main()
+{
+    unique_ptr&lt;int&gt; ptr1(new int(10));
+    unique_ptr&lt;int&gt; ptr2 = move(ptr1);
+
+    ptr2.reset(new int(250));
+    cout &lt;&lt; *ptr2.get() &lt;&lt; endl;	// 得到内存地址中存储的实际数值 250
+
+    return 0;
+}
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br></div></div><h4 id="删除器-2"><a href="#删除器-2" class="header-anchor">#</a> <strong>删除器</strong></h4> <p>unique_ptr指定删除器和shared_ptr指定删除器是有区别的，<strong>unique_ptr指定删除器的时候需要确定删除器的类型,不能像shared_ptr那样直接指定删除器。</strong></p> <p>举例如下：</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>shared_ptr&lt;int&gt; ptr1(new int(10), [](int*p) {delete p; });	// ok
+unique_ptr&lt;int&gt; ptr1(new int(10), [](int*p) {delete p; });	// error
+
+int main()
+{
+    using func_ptr = void(*)(int*);
+    unique_ptr&lt;int, func_ptr&gt; ptr1(new int(10), [](int*p) {delete p; });
+
+    return 0;
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>正确写法</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>int main()
+{
+    using func_ptr = void(*)(int*);
+    unique_ptr&lt;int, function&lt;void(int*)&gt;&gt; ptr1(new int(10), [&amp;](int*p) {delete p; });
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br></div></div><p>上面的代码中错误原因是这样的，在lambda表达式没有捕获任何外部变量时，可以直接转换为函数指针，一旦捕获了就无法转换了，如果想要让编译器成功通过编译，那么需要使用可调用对象包装器来处理声明的函数指针：</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>int main()
+{
+    using func_ptr = void(*)(int*);
+    unique_ptr&lt;int, function&lt;void(int*)&gt;&gt; ptr1(new int(10), [&amp;](int*p) {delete p; });
+    return 0;
+}
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="std-optinal"><a href="#std-optinal" class="header-anchor">#</a> std::optinal</h2> <p><code>std::optional</code> 是 C++17 中引入的标准库模板类。它提供了一种表示可选值的方式，也就是值可能存在，也可能不存在。它属于 <code>&lt;optional&gt;</code> 头文件。</p> <p><code>std::optional</code> 的主要目的是<strong>避免使用特殊的标志值（例如，空指针或魔法数）来表示缺少值</strong>。相反，它封装了一个可选值，让您以更类型安全和表达性更强的方式处理它。</p> <p>创建一个optinal对象，封装class类型</p> <p><code>std::optional&lt;class&gt;</code></p> <p>使用构造函数：</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>std::optional&lt;int&gt; opt_value1(42);   // 创建包含整数值的 std::optional 对象
+std::optional&lt;int&gt; opt_value2;       // 创建空的 std::optional 对象
+std::optional&lt;int&gt; opt_value3 = {};  // 同样是创建空的 std::optional 对象
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>使用工厂函数创建：</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>auto opt_value1 = std::make_optional&lt;int&gt;(42);  // 创建包含整数值的 std::optional 对象
+auto opt_value2 = std::make_optional&lt;int&gt;();     // 创建空的 std::optional 对象
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><h2 id="std-move"><a href="#std-move" class="header-anchor">#</a> std::move</h2> <blockquote><p>参考:https://zhuanlan.zhihu.com/p/645258818</p></blockquote> <p>在C++11中，标准库在<utility>中提供了一个有用的函数std::move，std::move并不能移动任何东西**，它唯一的功能是将一个<a href="https://so.csdn.net/so/search?q=%E5%B7%A6%E5%80%BC&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">左值<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>强制转化为右值引用，继而可以通过右值引用使用该值，以用于移动语义**。从实现上讲，std::move基本等同于一个类型转换：static_cast&lt;T&amp;&amp;&gt;(lvalue);</utility></p> <h3 id="左值和右值"><a href="#左值和右值" class="header-anchor">#</a> <strong>左值和右值</strong></h3> <p>左值是表达式结束后依然存在的持久对象(代表一个在内存中占有确定位置的对象)</p> <p>右值是表达式结束时不再存在的临时对象(不在内存中占有确定位置的表达式）</p> <p>便携方法：对表达式取地址，如果能，则为左值，否则为右值</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>1. int val;
+2. val = 4; // 正确 
+3. 4 = val; // 错误 
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br></div></div><p>上述例子中，由于在之前已经对变量val进行了定义，故在栈上会给val分配内存地址，运算符=要求等号左边是可修改的左值，</p> <p>右边是临时参与运算的值，一般在寄存器上暂存，运算结束后在寄存器上移除该值</p> <p><strong>一个对象被用作右值时，使用的是它的内容(值)，被当作左值时，使用的是它的地址。</strong></p> <p><strong>引用</strong></p> <p>**引用是C++语法做的优化，引用的本质还是靠指针来实现的。引用相当于变量的别名。**引用可以改变指针的指向，还可以改变指针所指向的值。</p> <p>引用的基本规则：</p> <ol><li>声明引用的时候必须初始化，且一旦绑定，不可把引用绑定到其他对象；即引用必须初始化，不能对引用重定义**；**</li> <li>对引用的一切操作，就相当于对原对象的操作。</li></ol> <p><strong>左值引用</strong></p> <p>左值引用的基本语法：type &amp;引用名 = 左值表达式；</p> <p><strong>右值引用</strong></p> <p><a href="https://so.csdn.net/so/search?q=%E5%8F%B3%E5%80%BC%E5%BC%95%E7%94%A8&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">右值引用<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>的基本语法type &amp;&amp;引用名 = 右值表达式；</p> <p>​    <strong>右值引用在企业开发人员在代码优化方面会经常用到。</strong></p> <p>​    右值引用的“&amp;&amp;”中间不可以有空格。</p> <h3 id="std-move函数怎么用"><a href="#std-move函数怎么用" class="header-anchor">#</a> <strong>std::move函数怎么用</strong></h3> <p>可以将对象从左值变为右值，避免拷贝构造，只是将对象状态或者所有权从一个对象转移到另一个对象，<strong>没有涉及内存的搬迁或者内存拷贝，从而极大地提高代码效率。</strong></p> <ul><li><strong>std::move作用主要可以将一个左值转换成右值引用，从而可以调用C++11右值引用的拷贝构造函数</strong></li> <li><strong>std::move应该是针对你的对象中有在堆上分配内存这种情况而设置的</strong></li></ul> <p>感觉很抽象，举一个例子来说明,接下来，我们以<code>std::vector&lt;MyClass&gt;</code>的相关操作为例，看一下std::move在工程中的具体应用：</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>int main() {
+    std::vector&lt;MyClass&gt; vec;
+    // 不使用移动语义
+    MyClass obj5(10);            // 调用默认构造函数
+    vec.push_back(obj5);         // 调用复制构造函数
+
+    // 使用移动语义
+    MyClass obj6(20);            // 调用默认构造函数
+    vec.push_back(std::move(obj6));                    // 调用拷贝+移动构造函数
+    for (auto &amp;obj : vec) {
+        obj.PrintData();
+    }
+
+    return 0;
+}
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br></div></div><p><strong>编译时构造函数调用截图</strong></p> <p><img src="https://typora-1309665611.cos.ap-nanjing.myqcloud.com/typora/image-20231206171459571.png" alt="image-20231206171459571"></p> <p>由上可知：首先，我们定义一个<code>std::vector&lt;MyClass&gt;</code>对象，并准备向其中push新元素。</p> <p>传统做法是不使用移动语义的，这样会先调用默认构造函数创建新对象obj1，再通过拷贝构造函数将obj1的资源复制到vector新元素中，<strong>在拷贝构造函数中会涉及到开辟内存、资源复制等操作；</strong></p> <p>当使用了移动语义之后，我们首先通过默认构造函数创建了对象obj2，然后通过std::move直接将obj2转换为右值传递给vector，将obj2的所有权转移给vector中的新元素，从运行结果也可以看出由于std::vector本身的实现机制，<strong>在所有权转移过程中调用了两次移动构造函数，但是均不会涉及内存开辟、资源复制等操作，提高了代码效率。</strong></p> <h2 id="四种cast转换"><a href="#四种cast转换" class="header-anchor">#</a> 四种cast转换</h2> <blockquote><p><a href="https://blog.csdn.net/Dontla/article/details/130792118" target="_blank" rel="noopener noreferrer">参考<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></p></blockquote> <ol><li><p>static_cast
+用于基本数据类型之间的转换，如int转换为double，<strong>也可以用于类层次结构中的向上转换（子类转换为父类）</strong>，但不能用于向下转换（父类转换为子类）。</p></li> <li><p>dynamic_cast
+用于类层次结构中的向下转换（父类转换为子类），但只能用于含有虚函数的类，且转换时会进行类型检查，如果转换失败则返回空指针。</p></li> <li><p>reinterpret_cast
+用于将一个指针转换为另一个类型的指针，或将一个整数转换为指针类型，但不进行类型检查，慎用。</p></li> <li><p>const_cast
+用于去除指针或引用类型的const属性，使其可以修改被指向的对象，但不能用于去除非const类型的const属性。</p></li></ol> <h2 id="size-t"><a href="#size-t" class="header-anchor">#</a> size_t</h2> <p>size_t 是C标准库中定义的，它是一个基本的与机器相关的无符号整数的 C/C++ 类型， <strong>它是 sizeof 操作符返回的结果类型，该类型的大小可选择。其大小足以保证存储内存中对象的大小（简单理解为 unsigned int 就可以了，64 位系统中为 long unsigned int）。通常用 sizeof(X) 操作，这个操作所得到的结果就是 size_t 类型。</strong></p> <blockquote><p>参考:https://blog.csdn.net/m0_51913750/article/details/128351873</p></blockquote> <h2 id="std-promise"><a href="#std-promise" class="header-anchor">#</a> std::promise</h2> <blockquote><p>[CPP Referrence](<a href="https://en.cppreference.com/w/cpp/thread/promise" target="_blank" rel="noopener noreferrer">std::promise - cppreference.com<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>)</p> <p>https://blog.csdn.net/sinat_31608641/article/details/124937401</p></blockquote> <p>std::promise 是 C++11 标准库中提供的异步编程工具之一，它通常与 std::future 一起使用，<strong>用来实现线程间的<a href="https://so.csdn.net/so/search?q=%E5%BC%82%E6%AD%A5%E9%80%9A%E4%BF%A1&amp;spm=1001.2101.3001.7020" target="_blank" rel="noopener noreferrer">异步通信<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></strong>。promise 提供了一个承诺（promise），表示在某个时间点一定会有一个值或一个异常被设置。</p> <p><strong>注意std::promise对象只能使用一次。</strong></p> <p>promise 可以在一个线程中设置一个值，而另一个线程中可以通过 std::future 来访问这个值。</p> <p>通常的做法是，创建一个 promise 对象，然后通过 promise 对象获取一个 future 对象，将 future 对象传递到另一个线程中去，另一个线程将值或异常设置到 promise 对象中，随后原线程可以通过 future 对象来获取值或异常。</p> <ul><li>std::promise<class T="">    实例化一个对象</class></li> <li>set_promise,设置promise的值，如果有关联的future对象，future会受到通知</li> <li>std::future<class T=""> future=promiseObject.get_future(),获取这个promise的future对象</class></li> <li>futureObjetc.wait()，如果其关联的promise对象调用了<code>set_promise</code>,退出等待</li></ul> <p><strong>官方文档提供的实例:  异步求和</strong></p> <p>在主函数（主线程）中声明 promise 及其对应的 future，在某个线程中传入 promise 并进行运算；
+在另一个线程中出入 future， 可利用get得到前一个线程中计算的结果；</p> <div class="language-C++ line-numbers-mode"><pre class="language-text"><code>#include &lt;chrono&gt;
+#include &lt;future&gt;
+#include &lt;iostream&gt;
+#include &lt;numeric&gt;
+#include &lt;thread&gt;
+#include &lt;vector&gt;
+ 
+void accumulate(std::vector&lt;int&gt;::iterator first,
+                std::vector&lt;int&gt;::iterator last,
+                std::promise&lt;int&gt; accumulate_promise)
+{
+    int sum = std::accumulate(first, last, 0);//调用标准库函数求和
+    //设置promise值，会通知到与之关联的future对象
+    accumulate_promise.set_value(sum); // Notify future
+    
+}
+ 
+void do_work(std::promise&lt;void&gt; barrier)
+{
+    std::this_thread::sleep_for(std::chrono::seconds(1));
+    barrier.set_value();
+}
+ 
+int main()
+{
+    // Demonstrate using promise&lt;int&gt; to transmit a result between threads.
+    std::vector&lt;int&gt; numbers = {1, 2, 3, 4, 5, 6};
+    std::promise&lt;int&gt; accumulate_promise;
+    std::future&lt;int&gt; accumulate_future = accumulate_promise.get_future();//主线程的std::promise&lt;int&gt; 和future关联
+    //使用 std::thread 创建了一个新线程 work_thread，并将 accumulate 函数作为线程函数执行，因此需要传递了numbers 向量的迭代器范围和 accumulate_promise 对象。
+    std::thread work_thread(accumulate, numbers.begin(), numbers.end(),
+                            std::move(accumulate_promise));
+ 
+    // future::get() will wait until the future has a valid result and retrieves it.
+    // Calling wait() before get() is not needed
+    // accumulate_future.wait(); // wait for result
+    std::cout &lt;&lt; &quot;result=&quot; &lt;&lt; accumulate_future.get() &lt;&lt; '\n';
+    work_thread.join(); // wait for thread completion，等待work_thread线程执行完成
+ 
+    // Demonstrate using promise&lt;void&gt; to signal state between threads.演示进程间的同步
+    std::promise&lt;void&gt; barrier;
+    std::future&lt;void&gt; barrier_future = barrier.get_future();
+    std::thread new_work_thread(do_work, std::move(barrier));
+    barrier_future.wait();//主线程阻塞，等待do_work执行完成
+    new_work_thread.join();//主线程阻塞，等待新线程执行完成
+    //这里主要想演示主线程等待子线程结束。
+}
+
+//output 21
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br></div></div><h2 id="std-future"><a href="#std-future" class="header-anchor">#</a> std::future</h2></div></div>  <div class="page-edit"><div class="edit-link"><a href="https://github.com/flokken/edit/master/docs/大数据/03.数据库/09.CMU15445/01.C++基础语法.md" target="_blank" rel="noopener noreferrer">编辑</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <div class="tags"><a href="/tags/?tag=C%2B%2B" title="标签">#C++</a></div> <div class="last-updated"><span class="prefix">上次更新:</span> <span class="time">2023/12/12, 09:45:51</span></div></div> <div class="page-nav-wapper"><div class="page-nav-centre-wrap"><a href="/pages/d315c3/" class="page-nav-centre page-nav-centre-prev"><div class="tooltip">Redis实战03</div></a> <a href="/pages/1aa22a/" class="page-nav-centre page-nav-centre-next"><div class="tooltip">vscode环境配置</div></a></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/pages/d315c3/" class="prev">Redis实战03</a></span> <span class="next"><a href="/pages/1aa22a/">vscode环境配置</a>→
+      </span></p></div></div></div> <div class="article-list"><div class="article-title"><a href="/archives" class="iconfont icon-bi">最近更新</a></div> <div class="article-wrapper"><dl><dd>01</dd> <dt><a href="/pages/fd9dbf/"><div>
+            线程池
+            <!----></div></a> <span class="date">09-16</span></dt></dl><dl><dd>02</dd> <dt><a href="/pages/64ddd0/"><div>
+            消息队列基础知识
+            <!----></div></a> <span class="date">09-08</span></dt></dl><dl><dd>03</dd> <dt><a href="/pages/4b5092/"><div>
+            树状数组和线段树
+            <!----></div></a> <span class="date">08-22</span></dt></dl> <dl><dd></dd> <dt><a href="/archives" class="more">更多文章&gt;</a></dt></dl></div></div></main></div> <div class="footer"><div class="icons"><a href="mailto:2878846959@qq.com" title="发邮件" target="_blank" class="iconfont icon-youjian"></a><a href="https://github.com/Flokken" title="GitHub" target="_blank" class="iconfont icon-github"></a><a href="https://music.163.com/#/my/m/music/playlist?id=807177837" title="听音乐" target="_blank" class="iconfont icon-erji"></a></div> 
+  Theme by
+  <a href="https://github.com/xugaoyi/vuepress-theme-vdoing" target="_blank" title="本站主题">Vdoing</a> 
+    | Copyright © 2023-2024
+    <span>flokken | <a href="https://github.com/xugaoyi/vuepress-theme-vdoing/blob/master/LICENSE" target="_blank">MIT License</a></span></div> <div class="buttons"><div title="返回顶部" class="button blur go-to-top iconfont icon-fanhuidingbu" style="display:none;"></div> <div title="去评论" class="button blur go-to-comment iconfont icon-pinglun" style="display:none;"></div> <div title="主题模式" class="button blur theme-mode-but iconfont icon-zhuti"><ul class="select-box" style="display:none;"><li class="iconfont icon-zidong">
+          跟随系统
+        </li><li class="iconfont icon-rijianmoshi">
+          浅色模式
+        </li><li class="iconfont icon-yejianmoshi">
+          深色模式
+        </li><li class="iconfont icon-yuedu">
+          阅读模式
+        </li></ul></div></div> <div class="body-bg" style="background:url() center center / cover no-repeat;opacity:0.5;"></div> <!----> <!----></div><div class="global-ui"><div></div></div></div>
+    <script src="/assets/js/app.6c1ebbcf.js" defer></script><script src="/assets/js/2.28dcc766.js" defer></script><script src="/assets/js/234.c51411ea.js" defer></script>
+  </body>
+</html>
